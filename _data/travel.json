@@ -1,0 +1,238 @@
+{
+  "trips": [
+    {
+      "name": "OpenStack Summit 2014",
+      "desc": "Presented at the OpenStack Summit on Optimizing OpenStack for Large Scale Cloud Foundry Deployments",
+      "date": "5/11/2014 - 5/16/2014",
+      "destinations": ["Atlanta, GA"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "OpenStack Summit 2013",
+      "desc": "Presented Bluemix at IBM's showroom booth",
+      "date": "11/3/2013 - 11/9/2013",
+      "destinations": ["Hong Kong"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "IMPACT 2012",
+      "desc": "Presented at IMPACT 2012",
+      "date": "4/28/12",
+      "destinations": ["Las Vegas, NV"],
+      "type": "business",
+      "images": ["impact_1.jpg"]
+    },
+    {
+      "name": "La Gaude's PureApplication System Implementation",
+      "desc": "Setup a PureApplication System in La Gaude's IBM Innovation Center",
+      "date": "",
+      "destinations": ["La Gaude, France", "Nice, France", "Monaco"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "Waltham's PureApplication System Implementation",
+      "desc": "Setup a PureApplication System in Waltham's IBM Innovation Center",
+      "date": "8/21/2012 - 8/24/2012",
+      "destinations": ["Boston, MA", "Waltham, MA"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "Client PureApplication System Implementation - Part 1",
+      "desc": "Initial client meetings to plan for their PureApplication System PoC",
+      "date": "",
+      "destinations": ["London, England"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "Client PureApplication System Implementation - Part 2",
+      "desc": "Deployment of PureApplication on client site",
+      "date": "",
+      "destinations": ["London, England", "Gloucester, England", "Stratford-upon-Avon, England", "Warwick, England", "Nottingham, England", "Sherwood Forest, England", "Manchester, England"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "PureApplication System Build for SVL",
+      "desc": "Setting up the PureApplication system that would be coming to our lab",
+      "date": "7/16/2012 - 7/20/2012",
+      "destinations": ["Raleigh, NC"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "PureApplication System Training",
+      "desc": "Learning the ins and outs of PureApplication System from the development team",
+      "date": "4/22/2012 - 5/4/2012",
+      "destinations": ["Raleigh, NC"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "Southeast Asia Cloud Briefings",
+      "desc": "Five countries in 2.5 weeks...what an awesome experience",
+      "date": "",
+      "destinations": ["Singapore", "Kuala Lumpur, Malaysia", "Jakarta, Indonesia", "Hanoi, Vietnam", "Halong Bay, Vietnam", "Bangkok, Thailand"],
+      "type": "business",
+      "images": ["asean_1.jpg", "asean_2.jpg", "asean_3.jpg"]
+    },
+    {
+      "name": "Image Construction and Composition Tool Training",
+      "desc": "Learned IBM's virtual machine customization tool",
+      "date": "9/11/2011 - 9/14/2011",
+      "destinations": ["Rochester, MN"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "PureApplication System Build",
+      "desc": "Built PureApplication Systems going out to client sites",
+      "date": "",
+      "destinations": ["Rochester, MN"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "Austin PureApplication System Meetup",
+      "desc": "Participated in initial PureApplication System discussions with Tiger Teams",
+      "date": "",
+      "destinations": ["Austin, TX"],
+      "type": "business",
+      "images": [""]
+    },
+    {
+      "name": "IBM Orientation",
+      "desc": "Learned how to be an IBMer",
+      "date": "7/10",
+      "destinations": ["Armonk, NY"],
+      "type": "business",
+      "images": ["orientation_1.jpg", "orientation_2.jpg", "orientation_3.jpg"]
+    },
+    {
+      "name": "Extreme Blue Expo",
+      "desc": "Presented to IBM execs (including then CEO Sam Palmisano) ",
+      "date": "8/10/09",
+      "destinations": ["Manhattan, NY", "Armonk"],
+      "type": "business",
+      "images": ["eb_1.jpg", "eb_2.jpg", "eb_3.jpg"]
+    },
+
+
+    {
+      "name": "GENSO Workshop - Vigo, Spain",
+      "desc": "GENSO workshop at the Universidad de Vigo",
+      "date": "1/27/2010",
+      "destinations": ["Vigo, Spain"],
+      "type": "school",
+      "link": "http://www.uvigo.es",
+      "images": [""]
+    },
+    {
+      "name": "GENSO Workshop - Vienna, Austria",
+      "desc": "GENSO workshop at the Technikum Wien.  On the way back we were snowed into Frankfort so we took the opportunity to explore Germany",
+      "date": "2/2009",
+      "destinations": ["Vienna, Austria", "Frankfort, Germany"],
+      "type": "school",
+      "link": "http://www.technikum-wien.at/en",
+      "images": ["vienna_1.jpg", "vienna_2.jpg", "vienna_3.jpg"]
+    },
+    {
+      "name": "GENSO Workshop - ESTEC Part 2",
+      "desc": "GENSO workshop at ESA's facility",
+      "date": "8/23/2009",
+      "destinations": ["Amsterdam, Netherlands", "Leiden, Netherlands", "Katwijk, Netherlands", "Noordwijk, Netherlands"],
+      "type": "school",
+      "link": "http://www.esa.int/About_Us/ESTEC",
+      "images": ["estec2_1.jpg", "estec2_2.jpg", "estec2_3.jpg"]
+    },
+    {
+      "name": "GENSO Workshop - ESTEC Part 1",
+      "desc": "GENSO workshop at ESA's facility",
+      "date": "3/7/2008",
+      "destinations": ["Amsterdam, Netherlands", "Leiden, Netherlands", "Katwijk, Netherlands", "Noordwijk, Netherlands"],
+      "type": "school",
+      "link": "http://www.esa.int/About_Us/ESTEC",
+      "images": ["estec1_1.jpg", "estec1_2.jpg", "estec1_3.jpg"]
+    },
+    {
+      "name": "GENSO Workshop - Aalborg, Denmark",
+      "desc": "GENSO workshop at Aalborg University",
+      "date": "10/2007",
+      "destinations": ["Aalborg, Denmark", "Copenhagen, Denmark"],
+      "type": "school",
+      "link": "http://www.en.aau.dk/",
+      "images": ["aalborg_1.jpg", "aalborg_2.jpg", "aalborg_3.jpg"]
+    },
+    {
+      "name": "CubeSat Workshop",
+      "desc": "Presented the current state of PolySat's satellites",
+      "date": "",
+      "destinations": ["Logan, UT"],
+      "type": "school",
+      "images": [""]
+    },
+
+
+
+    {
+      "name": "New York",
+      "desc": "A quick trip to New York to site see",
+      "date": "",
+      "destinations": ["New York, NY"],
+      "type": "personal",
+      "images": [""]
+    },
+    {
+      "name": "Montana Cabin Trip",
+      "desc": "First time visit to my wives' family cabin",
+      "date": "8/3/2013 - 8/10/2013",
+      "destinations": ["Montana"],
+      "type": "personal",
+      "images": [""]
+    },
+    {
+      "name": "Grandparent Visit",
+      "desc": "",
+      "date": "",
+      "destinations": ["Guaymas, MX", "San Carlos, MX"],
+      "type": "personal",
+      "images": [""]
+    },
+    {
+      "name": "Phoenix Family Trip",
+      "desc": "",
+      "date": "",
+      "destinations": ["Phoenix, AZ"],
+      "type": "personal",
+      "images": [""]
+    },
+    {
+      "name": "Europe Trip",
+      "desc": "The trip that I proposed to my amazing wife.",
+      "date": "",
+      "destinations": ["London, England", "Paris, France", "Lucerne, Switzerland", "Interlaken, Switzerland"],
+      "type": "personal",
+      "images": [""]
+    },
+    {
+      "name": "Family France Trip",
+      "desc": "Having international family friends pays off.  Spent a month in France touring around.",
+      "date": "",
+      "destinations": ["Paris, France", "Mont Saint Michel, France", "Loire Valley, France", "Nice, France", "Monaco"],
+      "type": "personal",
+      "images": [""]
+    },
+    {
+      "name": "Honeymoon",
+      "desc": "What more is there to say...",
+      "date": "10/2/2011 - 10/?/2011",
+      "destinations": ["Kauai, HI"],
+      "type": "personal",
+      "images": [""]
+    }
+  ]
+}

@@ -1,0 +1,496 @@
+{
+  "articles": [
+    {
+      "type": "IBM",
+      "name": "Implement a Hybrid Cloud with IBM SmartCloud Enterprise and WebSphere DataPower",
+      "desc": "",
+      "date": "2/5/2013",
+      "publisher": "",
+      "link": "http://public.dhe.ibm.com/software/dw/wes/hipods/Hybrid_Cloud_WP_final_6Aug_sh.pdf"
+    },
+    {
+      "type": "IBM",
+      "name": "Identifying Network Requirements for Applications in IBM PureApplication System",
+      "desc": "",
+      "date": "5/29/2013",
+      "publisher": "",
+      "link": "http://www.ibm.com/developerworks/cloud/library/cl-ps-aim1305-netreqs/index.html"
+    },
+    {
+      "type": "Academic",
+      "name": "Autonomous Satellite Operations For CubeSat Satellites - Master's Thesis",
+      "desc": "",
+      "date": "3/2010",
+      "publisher": "",
+      "link": "http://digitalcommons.calpoly.edu/theses/256"
+    },
+    {
+      "type": "Academic",
+      "name": "A Framework For Developing Artificial Intelligence for Autonomous Satellite Operations",
+      "desc": "",
+      "date": "7/2009",
+      "publisher": "IJCAI",
+      "link": "http://www.esa.int/gsp/ACT/ai/projects/ijcai09/papers/s1_4ander.pdf"
+    },
+    {
+      "type": "Academic",
+      "name": "A Survey of CubeSat Communication Subsystems",
+      "desc": "",
+      "date": "12/2009",
+      "publisher": "",
+      "link": "http://www.klofas.com/papers/AMSAT_Comm_Survey.pdf"
+    }
+  ],
+  "videos": [
+    {
+      "type": "IBM",
+      "name": "Cloud Foundry on OpenStack Video Series",
+      "desc": "",
+      "date": "10/18/2013",
+      "publisher": "",
+      "link": "https://www.youtube.com/watch?v=ojU1e3L6HUc"
+    }
+  ],
+  "presentations": [
+    {
+      "type": "IBM",
+      "name": "Cloud Foundry and OpenStack: How They Fit",
+      "desc": "",
+      "locations": [
+        {
+          "name": "Cloud Expo 2014 - Santa Clara, CA",
+          "link": "http://www.cloudcomputingexpo.com/",
+          "slides": "http://www.slideshare.net/andersonljason/cloud-expo2014-41190479",
+          "video": "",
+          "date": "11/3/14"
+        }
+      ],
+      "images": ["cloud_expo_presenting.jpg"]
+    },
+    {
+      "type": "IBM",
+      "name": "Meetup: Optimizing Cloud Foundry & OpenStack for large deployments",
+      "desc": "",
+      "locations": [
+        {
+          "name": "IBM Innovation Center - Silicon Valley, CA",
+          "link": "http://www.meetup.com/Bluemix/events/181433092/",
+          "slides": "",
+          "video": "",
+          "date": "6/25/14"
+        }
+      ]
+    },
+    {
+      "type": "IBM",
+      "name": "Cloud Foundry and OpenStack – Marriage Made in Heaven!",
+      "desc": "Bring the world's best IaaS to the world's best PaaS, In this talk IBM and Rackspace are going to share their experiences of running Cloud Foundry on OpenStack. The talk will focus on how CloudFoundry and OpenStack complement each other, how they technically integrate using Cloud provider interface (CPI), how could we automate OpenStack setup for Cloud Foundry deployments, and what are some of the best practices for configuring a scalable environment.",
+      "locations": [
+        {
+          "name": "Cloud Foundry Summit 2014 - San Francisco, CA",
+          "link": "https://2014.event.cfsummit.com",
+          "slides": "http://www.slideshare.net/AnimeshSingh/cloud-foundry-and-openstack-marriage-made-in-heaven-35717536",
+          "video": "https://www.youtube.com/watch?v=RlMSaLSuMqQ",
+          "date": "6/10/14"
+        }
+      ]
+    },
+    {
+      "type": "IBM",
+      "name": "Optimizing OpenStack for Large Scale Cloud Foundry Deployments",
+      "desc": "",
+      "locations": [
+        {
+          "name": "OpenStack Summit 2014 - Atlanta, GA",
+          "link": "https://www.openstack.org/summit/openstack-summit-atlanta-2014",
+          "slides": "http://www.slideshare.net/AnimeshSingh/optimizing-cloud-foundry-and-openstack-for-large-scale-deployments",
+          "video": "https://www.youtube.com/watch?v=jCwtV9n_ak4",
+          "date": "5/13/2014"
+        }
+      ]
+    },
+    {
+      "type": "IBM",
+      "name": "Cloud Overview",
+      "desc": "An overview of cloud technologies and a roadmap for how small companies can best adopt the cloud",
+      "locations": [
+        {
+          "name": "Bitwise - Frenso, CA",
+          "link": "",
+          "date": "4/28/2014"
+        }
+      ],
+      "link": ["https://docs.google.com/presentation/d/1SqDdlPv3Uj9bmvtjsIiF69gFbWztFNIslWlko3RgfvE",
+               "https://docs.google.com/presentation/d/1bt1hKTT3c9k9vZ__AV-RGNvDtXjTfu-726o9Q0p6GUc",
+               "https://docs.google.com/presentation/d/1rUgncv8edD6pZA50fIAvj_Op2DwtZBMD7y-ed7czBGM"
+      ]
+    },
+    {
+      "type": "IBM",
+      "name": "PureApplication System Networking",
+      "desc": "An overview of PureApplication System's networking configurations and tradeoffs",
+      "locations": [
+        {
+          "name": "Client Site",
+          "link": "",
+          "date": "12/2012"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "type": "IBM",
+      "name": "Expert Integrated Systems: Best Practices, Problem Determination Tips and Techniques",
+      "desc": "",
+      "locations": [
+        {
+          "name": "IMPACT 2012 - Las Vegas, NV",
+          "link": "",
+          "date": "4/28/12"
+        }
+      ],
+      "link": "impact2012.pdf"
+    },
+    {
+      "type": "IBM",
+      "name": "Cloud 9",
+      "desc": "Extreme Blue project presentation to IBM execs",
+      "locations": [
+        {
+          "name": "Armonk, NY",
+          "link": "",
+          "video": "https://www.youtube.com/watch?v=G1VsjdG2CQA",
+          "date": "8/10/2009"
+        }
+      ],
+      "link": ""
+    },
+
+    
+    {
+      "type": "Academic",
+      "name": "Thesis Defense",
+      "desc": "",
+      "locations": [
+        {
+          "name": "Cal Poly",
+          "link": "http://calpoly.edu",
+          "date": "10/2010"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "type": "Academic",
+      "name": "A Framework For Developing Artificial Intelligence for Autonomous Satellite Operations",
+      "desc": "",
+      "locations": [
+        {
+          "name": "IJCAI - Pasadena, CA",
+          "link": "",
+          "date": "7/2009"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "type": "Academic",
+      "name": "Automated Ground Station & the GENSO Project & the GENSO Project",
+      "desc": "",
+      "locations": [
+        {
+          "name": "CubeSat Workshop - Logan, UT",
+          "link": "http://calpoly.edu",
+          "date": "4/2009"
+        }
+      ],
+      "link": "http://www.cubesat.org/images/cubesat/presentations/DevelopersWorkshop2009/4_Comm/3_Foley-Automated_Groundstation.pdf"
+    },
+    {
+      "type": "Academic",
+      "name": "Space and Computers",
+      "desc": "",
+      "locations": [
+        {
+          "name": "Laurelwood Elementary School - San Jose, Ca",
+          "link": "http://lw.schoolloop.com",
+          "date": "2012"
+        },
+        {
+          "name": "CL Smith Elementary School - San Luis Obispo, Ca",
+          "link": "http://sm.slcusd.org",
+          "date": "2008"
+        }
+      ],
+      "link": "eweek_satellites.pdf"
+    },
+    {
+      "type": "Academic",
+      "name": "Space Communication Systems",
+      "desc": "",
+      "locations": [
+        {
+          "name": "Cal Poly, Introduction to Space Systems",
+          "link": "http://calpoly.edu",
+          "date": "04/22/09"
+        }
+      ],
+      "link": "aero_446.pdf"
+    }
+  ],
+  "patents": [
+    {
+      "name": "Identifying optimal virtual machine images in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US8793377",
+      "publicationDate": "7/29/2014",
+      "filingDate": "5/3/2011",
+      "abstract": "Embodiments of the present invention provide an approach for identifying optimal virtual machine (VM) images in a networked computing environment (e.g., a cloud computing environment). Specifically, in a typical embodiment, a set of system requirements, a profile, and a performance state of the networked computing environment are received as input and analyzed against a library of VM images. Based on the analysis, a set of VM images having software programs (e.g., also referred to herein as a software stack) capable of accommodating requirements defined by the input is identified. A requester can select one or more of the identified VM images, which can then be provisioned/deployed accordingly.",
+      "authors": ["Gregory J. Boss", "Jeffrey L. Coveyduc", "Christopher W. Roach"],
+      "link": "http://www.google.com/patents/US8793377"
+    },
+    {
+      "name": "Utilizing software component metadata to provision virtual machines in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20130275961",
+      "publicationDate": "10/17/2013",
+      "filingDate": "4/13/12",
+      "abstract": "Embodiments of the present invention provide a set of algorithmic methods that can be used to generate a pre-provisioned pool of virtual machines (VMs) in a networked computing environment. Specifically, an install time for possible combinations of software components of a VM in a plurality of software component combinations is calculated. Each respective install time is weighted by a value associated with a provisioning history of software components. At least part of the software component combinations is allocated to the pre-provisioned pool of virtual machines (VMs).",
+      "link": "https://www.google.com/patents/US20130275961"
+    },
+    {
+      "name": "Pre-provisioning virtual machines in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "CA2776183",
+      "publicationDate": "1/13/13",
+      "filingDate": "5/7/12",
+      "abstract": "In general, embodiments of the present invention provide an approach for pre--provisioning cloud computing resources such as virtual machines (VMs) in order to achieve faster and more consistent provisioning times. Embodiments of the present invention describe an approach to generate a pre-provisioned pool of virtual machines that are utilized when one or more consumers start to initiate a large volume of requests (e.g., instantiate/populate multiple e-commerce 'shopping carts'). In a typical embodiment, a selection of an operating system to be associated with a VM is received in a computer data structure. A provisioning of the VM will then be initiated based on the selection of the operating system. Thereafter, at least one selection of at least one software program to be associated with the VM will be received in the computer data structure. The provisioning of the VM can then be completed based on the at least one selection of the at least one software program in response to a provisioning request received in the computer data structure.",
+      "link": "https://www.google.com/patents/CA2776183A1"
+    },
+    {
+      "name": "Identifying optimal virtual machine images in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US8793377",
+      "publicationDate": "7/29/14",
+      "filingDate": "5/3/12",
+      "abstract": "Embodiments of the present invention provide an approach for identifying optimal virtual machine (VM) images in a networked computing environment (e.g., a cloud computing environment). Specifically, in a typical embodiment, a set of system requirements, a profile, and a performance state of the networked computing environment are received as input and analyzed against a library of VM images. Based on the analysis, a set of VM images having software programs (e.g., also referred to herein as a software stack) capable of accommodating requirements defined by the input is identified. A requester can select one or more of the identified VM images, which can then be provisioned/deployed accordingly.",
+      "link": "https://www.google.com/patents/US8793377"
+    },
+    {
+      "name": "Pre-provisioning virtual machines in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US8954586",
+      "publicationDate": "2/10/15",
+      "filingDate": "7/13/11",
+      "abstract": "Disclosed are approaches for pre-provisioning cloud computing resources such as virtual machines (VMs) in order to achieve faster and more consistent provisioning times. Embodiments describe approaches to generate a pre-provisioned pool of virtual machines that are utilized when one or more consumers start to initiate a large volume of requests. In typical embodiments, a selection of an operating system to be associated with a VM is received in a computer data structure. A provisioning of the VM will then be initiated based on the selection of the operating system. Thereafter, at least one selection of at least one software program to be associated with the VM will be received in the computer data structure. The provisioning of the VM can then be completed based on the at least one selection of the at least one software program in response to a provisioning request received in the computer data structure.",
+      "link": "https://www.google.com/patents/US8954586"
+    },
+    {
+      "name": "Determining starting values for virtual machine attributes in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US8806483",
+      "publicationDate": "8/12/14",
+      "filingDate": "4/13/11",
+      "abstract": "Embodiments of the present invention provide an approach for determining starting values of attributes for a requested virtual machine. Specifically, in a typical embodiment, a request for a virtual machine is received from a requester. An image corresponding to the virtual machine is then obtained. A set of statistics pertaining to at least one previous operation of a related virtual machine is analyzed and used to recommend starting values for a set of attributes of the virtual machine (e.g., a processor speed, a memory capacity, a disk capacity, a network capacity, etc.). The starting values can be determined by selecting a graphical curve, which depicts attribute values versus time, pertaining to a particular attribute and then providing recommended the starting values for the attribute based on a position along the graphical curve as determined based upon the analysis of the set of statistics. Thereafter, an instance of the virtual machine that has the starting values can be generated based on the image.",
+      "link": "https://www.google.com/patents/US8806483"
+    },
+    {
+      "name": "Policy implementation in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20130254360",
+      "publicationDate": "9/26/13",
+      "filingDate": "3/26/12",
+      "abstract": "Embodiments of the present invention relate to an approach for resolving and/or implementing policies based on layers of a network stack (e.g., cloud computing stack). Specifically, for a given policy that is being resolved, the system first evaluates the applicability of the policy to each layer in the network stack. For a given policy, the system then evaluates the relative effectiveness of applying the policy to achieve the overall goal of the policy. Based on the best fit evaluation of the relative comparison, the system then decides how and where the policy is enacted (e.g., determines a protocol for implementing the policy).",
+      "link": "https://www.google.com/patents/US20130254360"
+    },
+    {
+      "name": "Validating deployment patterns in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US8751620",
+      "publicationDate": "6/10/14",
+      "filingDate": "3/30/12",
+      "abstract": "Embodiments of the present invention provide an approach for validating deployment patterns/topologies (e.g., prior to being deployed) against existing patterns that have already been determined to be compliant (e.g., against a set of policies/standards). In a typical embodiment, individual components of a proposed deployment pattern are identified and then evaluated against previously approved deployment patterns (e.g., based on standards and/or policies). Components of the proposed deployment patterns that are deemed non-compliant are identified, and corrective action(s) may be determined to address any non-compliance (e.g., to put the non-compliant components into compliance, to remove the non-compliant components, etc.).",
+      "link": "https://www.google.com/patents/US8751620"
+    },
+    {
+      "name": "Optimization of resource provisioning in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US8825862",
+      "publicationDate": "9/2/14",
+      "filingDate": "8/1/11",
+      "abstract": "In general, embodiments of the present invention provide an approach for pre-provisioning computing resource sub-components in order to achieve improved overall provisioning times. In a typical embodiment, when a workload request is received, a set/sequence of tasks needed to complete the workload request is identified. Based on the set of tasks, a set of corresponding computing resources is determined. Rather than provision each computing resource as a whole, embodiments of the present invention break each computing resource into its individual sub-components. Once the sub-components are identified, the time required to provision (i.e., provisioning time) each sub-component is determined (e.g., based on historical data). Based on these provisioning times, an optimal order in which the sub-components should be provisioned is determined, and the sub-components are then provisioned in this order.",
+      "link": "https://www.google.com/patents/US8825862"
+    },
+    {
+      "name": "Configuring virtual machine images in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US8806485",
+      "publicationDate": "8/12/14",
+      "filingDate": "5/3/11",
+      "abstract": "Embodiments of the present invention provide an approach for configuring virtual machine (VM) images in a networked computing environment (e.g., a cloud computing environment). Specifically, in a typical embodiment, a provided VM image is associated with a set of competing VM images (e.g., via a web-based portal). Once the competing VM image(s) are associated with the provided VM image, a designation of a set of statistical actions can be designated for the provided VM image. Thereafter, a performance of the provided VM image and a performance of each of the set of competing VM images are monitored with respect to a set of predetermined attributes. This allows the performance of the provided VM image to be compared to the performance of each of the set of corresponding VM images. Based on the comparison, at least one of the set of statistical actions can be performed. In a typical embodiment, a statistical action may result in an adjustment (upward or downward) of a value of an attribute of the provided VM image where the performance of the provided image is either under-performing or over-performing with respect to a competing VM image. For example, if the provided image is performing at a speed that is a certain percentage lower than that of its competitors, the speed can be increased by a predetermined amount/percentage.",
+      "link": "https://www.google.com/patents/US8806485"
+    },
+    {
+      "name": "Providing network access",
+      "type": "Misc",
+      "patentNumber": "US8849244",
+      "publicationDate": "9/30/14",
+      "filingDate": "11/7/12",
+      "abstract": "A wireless service provider identifies a mobile computing device capable of short-range wireless communication and in an agreement to receive service from a cellular network. The wireless service provider provides, to the mobile computing device, terms for a third party computing device to accept in order to gain access to the cellular network via the mobile computing device. In response to a third party computing device agreeing to the terms, the wireless service provider indicates to the mobile computing device to allow the third party computing device to access the cellular network via the mobile computing device.",
+      "link": "https://www.google.com/patents/US8849244"
+    },
+    {
+      "name": "Provisioning of virtual machine pools based on historical data in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20130055239",
+      "publicationDate": "2/28/13",
+      "filingDate": "8/22/11",
+      "abstract": "Embodiments of the present invention generally describe how to utilize a pool of raw computing resources to dynamically resize environments due to workloads. Specifically, embodiments of the invention provide an approach for generating a partially pre-provisioned pool of virtual machines (VMs). The pool is typically derived from a history of patterns weighted by a potential state of a corresponding VM image to fulfill a workload request. For each VM instance, this approach determines/calculates the number of times that an instance represents a possible starting point for a VM request. The starting points are then normalized to create a probability distribution of the resulting partially pre-provisioned pool of virtual machines.",
+      "link": "https://www.google.com/patents/US20130055239"
+    },
+    {
+      "name": "Managing application template artifacts in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US8843889",
+      "publicationDate": "9/23/14",
+      "filingDate": "4/4/12",
+      "abstract": "Embodiments of the present invention provide an approach for managing application template artifacts throughout an application's lifecycle in a networked computing environment (e.g., a cloud computing environment). In a typical embodiment, a workload template is assigned to each phase of a set of successive phases of the application's lifecycle. Each template typically refers to a template in a preceding phase of the lifecycle. Moreover, the templates may contain pointers to artifacts used in the phases assigned thereto. Any changes occurring in the artifacts/phases are propagated to the corresponding templates so as to automatically manage application lifecycle operations.",
+      "link": "https://www.google.com/patents/US8843889"
+    },
+    {
+      "name": "Determining virtual machine image pattern distributions in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20130061221",
+      "publicationDate": "3/7/13",
+      "filingDate": "9/7/11",
+      "abstract": "Embodiments of the present invention provide an approach for determining distributions of virtual machine (VM) patterns across pools of VM instances based upon historical data (e.g., to achieve faster provisioning times). In a typical embodiment, a total pool size for a pool of VM instances is determined (e.g., based on historical data). Then, a distribution of a set of VM instance patterns across the pool is determined (e.g., also based upon historical data). Once the distribution has been determined, the pool of VM instances may be provisioned according to the distribution.",
+      "link": "https://www.google.com/patents/US20130061221"
+    },
+    {
+      "name": "Providing network access",
+      "type": "Misc",
+      "patentNumber": "US20140248851",
+      "publicationDate": "9/4/14",
+      "filingDate": "5/16/14",
+      "abstract": "A wireless service provider identifies a mobile computing device capable of short-range wireless communication and in an agreement to receive service from a cellular network. The wireless service provider provides, to the mobile computing device, terms for a third party computing device to accept in order to gain access to the cellular network via the mobile computing device. In response to a third party computing device agreeing to the terms, the wireless service provider indicates to the mobile computing device to allow the third party computing device to access the cellular network via the mobile computing device.",
+      "link": "https://www.google.com/patents/US20140248851"
+    },
+    {
+      "name": "Mapping requirements to a system topology in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20130268638",
+      "publicationDate": "10/10/13",
+      "filingDate": "4/5/12",
+      "abstract": "Embodiments of the present invention provide an approach for mapping requirements (e.g., functional and/or non-functional requirements) to components and/or policies of a system topology in a networked computing environment (e.g., a cloud computing environment). In a typical embodiment, a set of functional requirements is mapped to a set of components. A set of dependencies between the set of functional requirements is then indentified so that a set of interrelationships between the set of components may be identified. A set of non-functional requirements is then mapped to a set of policies that are then applied to the set of components. Based on the set of components, the set of interrelationships, and the set of policies, a system topology is generated. Upon implementation of the system topology, runtime metrics may be collected as feedback that is utilized for refinement of the system topology, as well as a system topology deployed in the future.",
+      "link": "https://www.google.com/patents/US20130268638"
+    },
+    {
+      "name": "Transferring applications and session state to a secondary device",
+      "type": "Misc",
+      "patentNumber": "US8938518",
+      "publicationDate": "1/20/15",
+      "filingDate": "1/16/12",
+      "abstract": "A first device transfers a running application to a second device. A first device sends a request to transfer a running application to a second device. The second device determines whether the application is presently installed on the second device. The second device determines whether the application is an application designed to run on a platform of the second device. The second device then receives state information for the application from the first device. In response to receiving the state information, the second device executes a counterpart application utilizing the state information received from the first device.",
+      "link": "https://www.google.com/patents/US8938518"
+    },
+    {
+      "name": "Pre-provisioning virtual machines in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20150046595",
+      "publicationDate": "2/12/15",
+      "filingDate": "10/22/14",
+      "abstract": "In general, embodiments of the present invention provide an approach for pre-provisioning cloud computing resources such as virtual machines (VMs) in order to achieve faster and more consistent provisioning times. Embodiments of the present invention describe an approach to generate a pre-provisioned pool of virtual machines that are utilized when one or more consumers start to initiate a large volume of requests (e.g., instantiate/populate multiple e-commerce ‘shopping carts’). In a typical embodiment, a selection of an operating system to be associated with a VM is received in a computer data structure. A provisioning of the VM will then be initiated based on the selection of the operating system. Thereafter, at least one selection of at least one software program to be associated with the VM will be received in the computer data structure. The provisioning of the VM can then be completed based on the at least one selection of the at least one software program in response to a provisioning request received in the computer data structure.",
+      "link": "https://www.google.com/patents/US20150046595"
+    },
+    {
+      "name": "Selection of virtual machines from pools of pre-provisioned virtual machines in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20130055251",
+      "publicationDate": "2/28/13",
+      "filingDate": "8/30/11",
+      "abstract": "Embodiments of the present invention provide a set of algorithmic methods that can be used to select which partially and/or pre-provisioned virtual machines (VMs) should be used as a base platform to satisfy a new workload (e.g., provisioning) request received in a networked computing environment (e.g., a cloud computing environment). Specifically, when a workload request is received, a set (e.g., at last one) of software programs needed to process the workload request is identified. Then, a set of VMs is selected from a pool of pre-provisioned VMs having the set of software programs. In general, multiple methods and/or factors can be followed to select the set of VMs. Examples include a length of time to install the set of VMs, a probability of the set of VMs being in demand, and/or or a quantity of the set of VMs having the set of software programs. Once the set of VMs has been selected, the set of VMs may be installed, and the workload request can be processed using the set of software programs.",
+      "link": "https://www.google.com/patents/US20130055251"
+    },
+    {
+      "name": "Analyzing metered cost effects of deployment patterns in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20130262189",
+      "publicationDate": "10/3/13",
+      "filingDate": "4/2/12",
+      "abstract": "Embodiments of the present invention provide an approach for analyzing operating costs (e.g., metered cost effects) for deployment patterns (and changes thereto) in a networked computing environment. In a typical embodiment, a deployment pattern for the networked computing environment is identified. The deployment pattern may comprise a set of components arranged in a network topology. Moreover, the set of components may be associated with a set of policies (e.g., stored in a computer memory medium and/or computer storage device). A cost analysis algorithm(s) may then be selected for the deployment pattern. The selected algorithm(s) may then be applied (e.g., to the deployment pattern and/or network computing environment) to analyze the operating costs of the deployment pattern.",
+      "link": "https://www.google.com/patents/US20130262189"
+    },
+    {
+      "name": "Transferring applications and session state to a secondary device",
+      "type": "Misc",
+      "patentNumber": "US8782139",
+      "publicationDate": "7/15/14",
+      "filingDate": "4/30/12",
+      "abstract": "A first device transfers a running application to a second device. A first device sends a request to transfer a running application to a second device. The second device determines whether the application is presently installed on the second device. The second device determines whether the application is an application designed to run on a platform of the second device. The second device then receives state information for the application from the first device. In response to receiving the state information, the second device executes a counterpart application utilizing the state information received from the first device.",
+      "link": "https://www.google.com/patents/US8782139"
+    },
+    {
+      "name": "Protecting electronic devices from electrical supply disturbances",
+      "type": "Misc",
+      "patentNumber": "US20130103219",
+      "publicationDate": "4/25/13",
+      "filingDate": "10/19/11",
+      "abstract": "Embodiments of the present invention provide an approach for monitoring electrical disturbance (e.g., surges, outages, etc.) possibilities, and then automatically isolating electronic devices (also referred to herein as electronics) for the duration of the disturbance (or threat thereof). In a typical embodiment, a probability of an electrical disturbance occurring at a specified location will be determined. Then, a set of device protection profiles will be accessed. The set of device protection profiles comprises a set of thresholds and a corresponding set of device topologies associated with a set of electronic devices positioned. The set of thresholds in the set of device protection profiles will then be compared to the probability to identify a matching device topology from the set of device topologies. According to the matching device topology, at least one electronic device will be isolated from an electrical power source.",
+      "link": "https://www.google.com/patents/US20130103219"
+    },
+    {
+      "name": "Providing personalized results for gift giving utilizing a database",
+      "type": "Misc",
+      "patentNumber": "US20130103542",
+      "publicationDate": "4/25/13",
+      "filingDate": "10/19/11",
+      "abstract": "An approach for providing personalized results for gift giving utilizing a database is provided. The approach includes reviewing, by a processor, an item list of a recipient, determining an item to provide to the recipient that is not on the item list, and sending the item to the recipient. The item list is stored in one or more databases of at least one of a recipient device, a merchant server, and a third party server, for querying of the item list.",
+      "link": "https://www.google.com/patents/US20130103542"
+    },
+    {
+      "name": "Intelligent and coordinated lighting of a lighting device",
+      "type": "Misc",
+      "patentNumber": "US20140001961",
+      "publicationDate": "1/2/14",
+      "filingDate": "6/2/12",
+      "abstract": "Intelligent lighting is provided to motorists traveling down a stretch of road by sequentially turning on adjacent lighting devices in a lighting segment only when required, such as when vehicles are approaching the lighting devices, and turning off the lighting devices or decreasing a light intensity output of the lighting devices to a predefined minimum lighting intensity output level when no vehicles are present. In addition, which bulb to use in a multi-bulb lighting device is determined, as well as the optimal lighting intensity level of the selected bulb. Further, it is determined which lighting devices in a lighting segment may be turned off or dimmed while maintaining a predefined minimum safe light/brightness level along a pathway associated with the lighting segment.",
+      "link": "https://www.google.com/patents/US20140001961"
+    },
+    {
+      "name": "Bandwidth management",
+      "type": "Misc",
+      "patentNumber": "US20140129385",
+      "publicationDate": "5/8/14",
+      "filingDate": "11/5/12",
+      "abstract": "A computer identifies a plurality of available network connections, wherein at least one of the identified network connections is contractually available to the computer under terms of a monthly data plan. The computer determines, based, at least in part, on characteristics of each network connection of the plurality of network connections and anticipated bandwidth consumption of the computer, a network connection to connect to from the plurality of network connections. The computer connects to the determined network connection. The computer determines, based, at least in part, on anticipated bandwidth consumption of the computer and contractual terms of the monthly data plan, an amount of excess bandwidth available for sale.",
+      "link": "https://www.google.com/patents/US20140129385"
+    },
+    {
+      "name": "Optimizing the configuration of virtual machine instances in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US8769531",
+      "publicationDate": "7/1/14",
+      "filingDate": "5/25/11",
+      "abstract": "Embodiments of the present invention provide an approach for optimizing a configuration of virtual machine (VM) instances. In a typical embodiment, such optimization comprises either the splitting of a single VM instance into multiple VM instances or the consolidation of multiple VM instances into fewer (e.g., a single) VM instance. Along these lines, it will first be determined which VM instances would be good candidates for reconfiguration. Under one approach, VM instances that are candidates for reconfiguration are identified based upon an analysis of applicable/associated service level agreement (SLA) terms versus the performance of the VM instances. For example, VM instances can be reconfigured if such reconfiguration will maximize a benefit provided by the applicable SLA terms (e.g., if the splitting of a single VM instance into multiple VM instances would cause a workload to be processed more efficiently, resulting in a more favorable cost/benefit ratio). In another embodiment, candidate VM instances can be identified based upon a commonality of an entity (e.g., a consumer) associated therewith. For example, if a single entity is utilizing multiple VM instances, such VM instances could be considered candidates for consolidation to avoid unnecessary computing resource consumption.",
+      "link": "https://www.google.com/patents/US8769531"
+    },
+    {
+      "name": "Optimizing the configuration of virtual machine instances in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20140298337",
+      "publicationDate": "10/2/14",
+      "filingDate": "5/27/14",
+      "abstract": "Embodiments of the present invention provide an approach for optimizing a configuration of virtual machine (VM) instances. In a typical embodiment, such optimization comprises either the splitting of a single VM instance into multiple VM instances or the consolidation of multiple VM instances into fewer (e.g., a single) VM instance. Along these lines, it will first be determined which VM instances would be good candidates for reconfiguration. Under one approach, VM instances that are candidates for reconfiguration are identified based upon an analysis of applicable/associated service level agreement (SLA) terms versus the performance of the VM instances. For example, VM instances can be reconfigured if such reconfiguration will maximize a benefit provided by the applicable SLA terms (e.g., if the splitting of a single VM instance into multiple VM instances would cause a workload to be processed more efficiently, resulting in a more favorable cost/benefit ratio). In another embodiment, candidate VM instances can be identified based upon a commonality of an entity (e.g., a consumer) associated therewith. For example, if a single entity is utilizing multiple VM instances, such VM instances could be considered candidates for consolidation to avoid unnecessary computing resource consumption.",
+      "link": "https://www.google.com/patents/US20140298337"
+    },
+    {
+      "name": "Generating a deployment pattern for reuse in a networked computing environment",
+      "type": "Cloud",
+      "patentNumber": "US20140373011",
+      "publicationDate": "12/18/14",
+      "filingDate": "6/17/13",
+      "abstract": "An approach for generating a deployment pattern for reuse after the deployment of a set of virtual machines and related application artifacts in a networked computing environment (e.g., a cloud computing environment) is provided. In a typical embodiment, information associated with one or more previously provisioned application environments is derived and, after analyzing the information, a deployment pattern is created in the form of tangible artifacts which may be reuse for further deployments without the need to trace back the original procedures used to deploy the previously previsioned application environment.",
+      "link": "https://www.google.com/patents/US20140373011"
+    }
+  ]
+}

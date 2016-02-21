@@ -1,0 +1,109 @@
+{
+  "awards": [
+    {
+      "name": "Outstanding Graduate Award",
+      "desc": "For demonstrating academic excellence, creative achievement, and scholarly / professional potential",
+      "date": "6/2010",
+      "organization": "California Polytechnic State University",
+      "link": ""
+    },
+    {
+      "name": "Bank of America Award - Computer Science",
+      "desc": "For demonstrating outstanding skills in Computer Science",
+      "date": "6/2005",
+      "organization": "Bellarmine",
+      "link": ""
+    },
+    {
+      "name": "Everyday Hero Award",
+      "desc": "For the delivery of PureApplication System",
+      "date": "10/2012",
+      "organization": "IBM",
+      "link": ""
+    }
+  ],
+  "press": [
+    {
+      "name": "Outstanding Graduates 2010",
+      "desc": "Cal Poly Engineering News",
+      "date": "6/7/2010",
+      "organization": "California Polytechnic State University",
+      "link": "outstanding_graduate.pdf"
+    }
+  ],
+  "education": [
+    {
+      "name": "Bachelor and Master Degree in Computer Science",
+      "desc": "",
+      "date": "2010",
+      "organization": "California Polytechnic State University",
+      "link": ""
+    },
+    {
+      "name": "Architectural Thinking",
+      "desc": "Defined a repeatable and consistent approach to developing IT architectures",
+      "date": "12/2/14 - 12/12/14",
+      "organization": "IBM",
+      "link": ""
+    },
+    {
+      "name": "Project Management Introduction",
+      "desc": "An overview of project management fundamentals such as schedule, risk, and validation",
+      "date": "3/24/14 - 3/28/14",
+      "organization": "IBM",
+      "link": ""
+    },
+    {
+      "name": "Ruby / Rails Bootcamp",
+      "desc": "An bootcamp covering Ruby and the Rails web framework",
+      "date": "4/13",
+      "organization": "NIRD",
+      "link": "http://nird.us"
+    },
+    {
+      "name": "C-Level Messaging",
+      "desc": "A executive messaging / public speaking course",
+      "date": "2/13",
+      "organization": "Mandel",
+      "link": "http://www.mandel.com"
+    },
+    {
+      "name": "AJSEC JIPS",
+      "desc": "Juniper security course covering routing, firewalls, and VPNs",
+      "date": "5/18/2012",
+      "organization": "Juniper",
+      "link": "juniper_cert.pdf"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "IT Architect, Level 2",
+      "desc": "Mastered IT Architectural principles and consistently demonstrated them throughout professional projects",
+      "date": "10/2014",
+      "organization": "Open Group / IBM",
+      "link": "http://www.opengroup.org/certifications/professional/open-ca"
+    },
+    {
+      "name": "IBM Master Inventor",
+      "desc": "An appointment to identify new inventions, mentor other employees through the patent process, foster innovative thinking, and help evaluate ideas for patenting",
+      "date": "10/2014",
+      "organization": "IBM",
+      "link": "http://en.wikipedia.org/wiki/IBM_Master_Inventor"
+    },
+    {
+      "name": "JNCIA",
+      "desc": "Juniper's initial certification for understanding of networking fundamentals",
+      "date": "11/11/2013",
+      "organization": "Juniper",
+      "link": "jncia_cert.pdf"
+    },
+    {
+      "name": "IT Specialist, Level 1",
+      "desc": "Ability to deliver effective development, implementation and operation of IT solutions",
+      "date": "11/1/2012",
+      "organization": "Open Group / IBM",
+      "link": ["http://www.opengroup.org/certifications/professional/open-cits",
+               "it_specialist.pdf"]
+    }
+  ]
+}

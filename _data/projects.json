@@ -1,0 +1,358 @@
+{
+  "projects": [
+
+    {
+      "type": "Personal",
+      "name": "Media Server",
+      "desc": "A media server for streaming content to my TV using a Raspberry Pi",
+      "date": "1/2014",
+      "tech": "Raspberry Pi, XBMC",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "Personal",
+      "name": "X10 Christmas Lights",
+      "desc": "A Christmas light controller using X10 and its python APIs",
+      "date": "12/2012",
+      "tech": "Python, Cron, X10",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "Personal",
+      "name": "Investment Manager",
+      "desc": "An investment manager web application",
+      "date": "6/2013",
+      "tech": "Ruby on Rails, MySQL",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+
+
+    {
+      "type": "IBM",
+      "name": "GitHub Repository Analytics with Filtering (GRAF)",
+      "desc": "A method to determine contributions to projects hosted on GitHub",
+      "date": "1/2014 - 7/2014",
+      "tech": "Ruby on Rails, MySQL",
+      "starred": "true",
+      "link": "http://github.com/jasonlanderson/graf",
+      "images": ["graf.png"]
+    },
+    {
+      "type": "IBM",
+      "name": "Cloud 9",
+      "desc": "An app store for WebSphere Cloudburst, the precursor to IBM's Platform as a Service",
+      "date": "5/2009 - 8/2009",
+      "tech": "Grails, Java",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+
+
+    {
+      "type": "Space",
+      "name": "CP4 / CP6",
+      "desc": "CubeSat satellites with software for communication (C&DH) and science payloads",
+      "date": "2006 - 2010",
+      "tech": "C, PIC16 (embedded programming)",
+      "starred": "true",
+      "link": "",
+      "images": ["cubesat_in_space.png"]
+    },
+    {
+      "type": "Space",
+      "name": "MoreDBs",
+      "desc": "A data collection and analysis tool for satellite data",
+      "date": "2009",
+      "tech": "Ruby on Rails, PostgreSQL",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "Space",
+      "name": "Satellite Data Visualization",
+      "desc": "A visualization tool which allows users with satellite data to plot multiple data axes onto an orbit",
+      "date": "",
+      "tech": "C, OpenGL",
+      "starred": "true",
+      "link": "http://users.csc.calpoly.edu/~zwood/teaching/csc572/final08/jander06",
+      "images": ["sat_visualization_1.png", "sat_visualization_2.png"]
+    },
+
+
+
+    {
+      "type": "College",
+      "name": "Artistock",
+      "desc": "A program which conducts sentiment analysis for Google News stories to predict stock market behavior",
+      "date": "2008",
+      "tech": "Java",
+      "starred": "true",
+      "link": "",
+      "images": ["artistocks_1.png"]
+    },
+    {
+      "type": "College",
+      "name": "Simple CPU Design",
+      "desc": "An implementation of a simple CPU",
+      "date": "2006",
+      "tech": "MIPS",
+      "starred": "true",
+      "link": "",
+      "images": ["processor.jpg"]
+    },
+    {
+      "type": "College",
+      "name": "XML Database Management System",
+      "desc": "A complete XML DBMS which can store XML documents and query them using XPath",
+      "date": "2007",
+      "tech": "Java",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "College",
+      "name": "EVIL Compiler",
+      "desc": "A compiler to generate assembly code",
+      "date": "2008",
+      "tech": "Java",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "College",
+      "name": "TCP Stack using UDP",
+      "desc": "To better understand networking, I implemented TCP using UDP",
+      "date": "2008",
+      "tech": "C",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "College",
+      "name": "The Overly Reliable Billing System (ORBS)",
+      "desc": "A system which manages billing individuals (e.g. roommates) and accounts receivable",
+      "date": "2007",
+      "tech": "PHP, MySQL",
+      "starred": "true",
+      "link": "",
+      "images": ["orbs_1.png", "orbs_2.png"]
+    },
+    {
+      "type": "College",
+      "name": "Research Organizer",
+      "desc": "Implemented mostly as a tool for my thesis, Research Organizer maintains reference works and their quotations",
+      "date": "2008",
+      "tech": "PHP",
+      "starred": "true",
+      "link": "",
+      "images": ["research_1.png", "research_2.png"]
+    },
+    {
+      "type": "College",
+      "name": "Number Recognition Neural Network",
+      "desc": "Created a neural network which could recognize numbers based on 9 binary inputs",
+      "date": "2005",
+      "tech": "Java",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "College",
+      "name": "Essay Analyzer",
+      "desc": "A tool which analyzes an essay for common issues (repetitive words, inconsistent style, ...)",
+      "date": "2007",
+      "tech": "Java",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "College",
+      "name": "Text Verbalization",
+      "desc": "A tool used to vocalize text in order to better catch grammatical error in essays",
+      "date": "2007",
+      "tech": "C# (.NET)",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+
+
+
+    {
+      "type": "Comp Three",
+      "name": "Quality Metrics and Reporting (QMR)",
+      "desc": "An analysis and reporting tool for shop-floor operations and defect data",
+      "date": "2010",
+      "tech": "ColdFusion, Oracle",
+      "starred": "true",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "Comp Three",
+      "name": "CMS / ARS Archive",
+      "desc": "An archive system for contracts and invoices",
+      "date": "",
+      "tech": "ColdFusion, SQLServer, Oracle",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "Comp Three",
+      "name": "Reprint Invoice for ARS",
+      "desc": "A view and print invoice archive",
+      "date": "",
+      "tech": "ColdFusion, PDF's, PCL, Cobalt (Original Code), SQLServer, Oracle",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "Comp Three",
+      "name": "HTML Help",
+      "desc": "Creation of Help documentation for HTML and CHM formats for Therma Corp.",
+      "date": "",
+      "tech": "HTML",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "Comp Three",
+      "name": "Comp Three Website",
+      "desc": "A revamp for Comp Three's website",
+      "date": "",
+      "tech": "HTML",
+      "starred": "false",
+      "link": "http://compthree.com",
+      "images": []
+    },
+
+
+
+    {
+      "type": "High School",
+      "name": "Internet Whiteboard",
+      "desc": "An online website which manages whiteboard screenshots for students.  Used for multiple years by different Math classes.",
+      "date": "",
+      "tech": "PHP, Java, MySQL",
+      "starred": "true",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "High School",
+      "name": "French Verb Tutor",
+      "desc": "A french verb database with searching based on english or french and quiz capability for conjugation",
+      "date": "",
+      "tech": "JavaServer Pages (JSP), MySQL",
+      "starred": "true",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "High School",
+      "name": "French Verb AI",
+      "desc": "A tool which predicts the correct verb conjugation",
+      "date": "",
+      "tech": "PHP, Java, MySQL",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "High School",
+      "name": "Address Book",
+      "desc": "A simple address book which served first as a learning experience for ColdFusion and then PHP",
+      "date": "",
+      "tech": "PHP, ColdFusion, MySQL",
+      "starred": "true",
+      "link": "",
+      "images": ["address_book_1.png", "address_book_2.png"]
+    },
+    {
+      "type": "High School",
+      "name": "Duck Hunt Clone",
+      "desc": "A simple \"Duck Hunt\" clone using your mouse",
+      "date": "",
+      "tech": "Java",
+      "starred": "true",
+      "link": "",
+      "images": ["birds.jpg"]
+    },
+    {
+      "type": "High School",
+      "name": "Burning Cards",
+      "desc": "My first attempt at a full, real world game.  It contained a complete storyline, world map, and accomplishments.  Players had to compete using the Might and Magic mini-game called Acromage.  Additionally this game featured a map builder tool which simplified environment creation.",
+      "date": "",
+      "tech": "Java",
+      "starred": "true",
+      "link": "",
+      "images": ["burning_cards_1.png", "burning_cards_2.png", "burning_cards_3.png"]
+    },
+    {
+      "type": "High School",
+      "name": "Columns Clone",
+      "desc": "A clone of the classic \"Tetris\" like game called Columns",
+      "date": "",
+      "tech": "Java",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "High School",
+      "name": "Monopoly Clone",
+      "desc": "A clone of the classic game \"Monopoly\"",
+      "date": "",
+      "tech": "Java",
+      "starred": "true",
+      "link": "",
+      "images": ["monopoly_1.png", "monopoly_2.png"]
+    },
+    {
+      "type": "High School",
+      "name": "Knights Puzzle",
+      "desc": "An implementation of the classic Knights puzzle",
+      "date": "",
+      "tech": "Java",
+      "starred": "false",
+      "link": "",
+      "images": ["puzzle_knights.jpg"]
+    },
+    {
+      "type": "High School",
+      "name": "Book Catalog",
+      "desc": "A catalog database for management books",
+      "date": "",
+      "tech": "PHP",
+      "starred": "false",
+      "link": "",
+      "images": []
+    },
+    {
+      "type": "High School",
+      "name": "Space Breakout",
+      "desc": "A clone of the classic game \"Breakout\"",
+      "date": "",
+      "tech": "Java",
+      "starred": "true",
+      "link": "",
+      "images": ["space_breakout.jpg"]
+    }
+  ]
+}

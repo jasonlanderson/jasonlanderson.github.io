@@ -4,10 +4,10 @@
   <div class="header-name pull-left">Jason L. Anderson</div>
 
   <ul class="nav navbar-nav pull-right">
-    <li><a class="active" href="{{ "/index.html" | prepend: site.baseurl }}">Welcome!</a></li>
-    <li><a href="{{ "/accomplishments.html" | prepend: site.baseurl }}">Accomplishments</a></li>
-    <li><a href="{{ "/projects.html" | prepend: site.baseurl }}">Projects</a></li>
-    <li><a href="{{ "/publications.html" | prepend: site.baseurl }}">Publications</a></li>
-    <li><a href="{{ "/travel.html" | prepend: site.baseurl }}">Travel</a></li>
+    <li {{ page.url | active_if_match: "/"}}><a href="{{ "/index.html" | prepend: site.baseurl }}">Welcome!</a></li>
+    <li {{ page.url | active_if_match: "/accomplishments.html"}}><a href="{{ "/accomplishments.html" | prepend: site.baseurl }}">Accomplishments</a></li>
+    <li {{ page.url | active_if_match: "/projects.html"}}><a href="{{ "/projects.html" | prepend: site.baseurl }}">Projects</a></li>
+    <li {{ page.url | active_if_match: "/publications.html"}}><a href="{{ "/publications.html" | prepend: site.baseurl }}">Publications</a></li>
+    <li {{ page.url | active_if_match: "/travel.html"}}><a href="{{ "/travel.html" | prepend: site.baseurl }}">Travel</a></li>
   </ul>
 </nav>

@@ -1,0 +1,73 @@
+{% assign table_id = include.section_header | downcase | replace: ' ', '-' %}
+
+<table id="{{ table_id }}" style="margin-bottom: 50px;">
+
+  <thead>
+  <tr>
+    {% for field in include.table_fields %}
+      <th>
+        {{ field.label }}
+      </th>
+    {% endfor %}
+    <th width="10%">Details</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  {% for item in include.items %}
+    <tr>
+      {% for field in include.table_fields %}
+        <td>
+          {% assign cell_value = item[field.field]] %}
+
+          {% comment %} Truncate if needed {% endcomment %}
+          {% if field.truncate_length %}
+            {% assign cell_value = cell_value | truncate: field.truncate_length %}
+          {% endif %}
+
+          {% comment %} Format date if the cell is a date {% endcomment %}
+          {% if field.field == "date" %}
+            {% assign cell_value = cell_value | format_date %}
+          {% endif %}
+          
+
+          {% comment %} Make a link if necessary {% endcomment %}
+          {% if field.link_field and item[field.link_field] and item[field.link_field] != "" %}
+            {% capture cell_value %}<a href="{{item[field.link_field] | format_link}}">{{cell_value}}</a>{% endcapture %}
+          {% endif %}
+
+          {% if field.mouseover_field %}
+            {% capture cell_value %}<span title="{{item[field.mouseover_field]}}">{{cell_value}}</span>{% endcapture %}
+          {% endif %}
+
+          {{ cell_value }}
+        </td>
+      {% endfor %}
+      <td>
+        <button type="button" data-toggle="modal" data-target="#item-modal-{{table_id}}-{{ forloop.index }}">Details</button>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    dtOptions = {
+      bInfo: false,
+      bFilter: false,
+      bPaginate: false,
+      bSort: false,
+      //sScrollY: "200px"
+    }
+    $('#{{ table_id }}').DataTable(dtOptions);
+  });
+</script>
+
+
+{% for item in include.items %}
+  {% assign modal_id="item-modal-" | append: table_id | append: '-' | append: forloop.index %}
+  {% include _details_modal.html item=item modal_id=modal_id popup_fields=include.popup_fields %}
+{% endfor %}
+

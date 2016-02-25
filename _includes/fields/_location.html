@@ -1,0 +1,22 @@
+{% assign has_slides=include.field.slides | exists_and_not_empty %}
+{% assign has_video=include.field.video | exists_and_not_empty %}
+
+{% if include.field.link | exists_and_not_empty %}
+  <a href="{{ field.link }}">{{ include.field.name }} - {{ include.field.date }}</a>
+{% else %}
+  {{ include.field.name }} - {{ include.field.date }}
+{% endif %}
+
+{% if has_slides or has_video %}
+  (
+  {% if has_slides %}
+    <a href="{{ include.field.slides }}">Slides</a>
+  {% endif %}
+  {% if has_slides and has_video %}
+    |
+  {% endif %}
+  {% if has_video %}
+    <a href="{{ include.field.video }}">Video</a>
+  {% endif %}
+  )
+{% endif %}

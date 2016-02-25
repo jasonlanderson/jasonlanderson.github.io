@@ -1,5 +1,42 @@
 ---
 layout: default
+
+trip_table_fields:
+- field: 'name'
+  label: 'Name'
+  truncate_length: 60
+  mouseover_field: 'name'
+  link_field: 'link'
+- field: 'date'
+  label: 'Date'
+
+trip_popup_fields:
+- name: 'name'
+  css_class: 'item-title'
+  partial: 'fields/_simple.html'
+- name: 'desc'
+  partial: 'fields/_description.html'
+- name: 'date'
+  label: 'Date'
+  partial: 'fields/_simple.html'
+- name: 'destinations'
+  label: 'Destination'
+  partial: 'fields/_simple.html'
+- name: 'link'
+  label: 'Link'
+  partial: 'fields/_link.html'
 ---
 
-Travel
+{% assign trips_by_type = site.data.travel.trips | group_by:"type" %}
+{% for subsection in trips_by_type %}
+  {% if subsection.name != "personal" %}
+    {% assign section_header=subsection.name | capitalize %}
+    {% include _section.html
+      items=subsection.items
+      section_header=section_header
+      table_fields=page.trip_table_fields
+      popup_fields=page.trip_popup_fields
+      items_partial='items/_items_table.html'
+    %}
+  {% endif %}
+{% endfor %}

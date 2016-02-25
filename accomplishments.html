@@ -1,5 +1,40 @@
 ---
 layout: default
+accomplishments_table_fields:
+- field: 'name'
+  label: 'Name'
+  truncate_length: 60
+  mouseover_field: 'name'
+  link_field: 'link'
+- field: 'organization'
+  label: 'Organization'
+- field: 'date'
+  label: 'Date'
+accomplishments_popup_fields:
+- name: 'name'
+  css_class: 'item-title'
+  partial: 'fields/_simple.html'
+- name: 'desc'
+  partial: 'fields/_description.html'
+- name: 'date'
+  label: 'Date'
+  partial: 'fields/_simple.html'
+- name: 'org'
+  label: 'Org'
+  partial: 'fields/_simple.html'
+- name: 'link'
+  label: 'Link'
+  partial: 'fields/_link.html'
 ---
 
-Accomplishments
+{% for accomplishment_section in site.data.accomplishments %}
+  {% assign section_header=accomplishment_section[0] | capitalize %}
+  {% assign items=accomplishment_section[1] %}
+  {% include _section.html
+    items=items
+    section_header=section_header
+    table_fields=page.accomplishments_table_fields
+    popup_fields=page.accomplishments_popup_fields
+    items_partial='items/_items_table.html'
+  %}
+{% endfor %}

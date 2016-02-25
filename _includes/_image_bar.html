@@ -1,0 +1,7 @@
+<div class="image-bar">
+  {% for image in include.images %}
+    {% if image != "" %}
+      <a href="assets/files/{{image}}"><img class="image-bar-item" src="assets/files/{{image}}"></a>
+    {% endif %}
+  {% endfor %}
+</div>

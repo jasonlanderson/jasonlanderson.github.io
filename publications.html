@@ -1,5 +1,93 @@
 ---
 layout: default
+
+article_table_fields:
+- field: 'name'
+  label: 'Name'
+  truncate_length: 60
+  mouseover_field: 'name'
+  link_field: 'link'
+- field: 'date'
+  label: 'Date'
+
+presentation_table_fields:
+- field: 'name'
+  label: 'Name'
+  truncate_length: 60
+  mouseover_field: 'name'
+  link_field: 'link'
+
+article_popup_fields:
+- name: 'name'
+  css_class: 'item-title'
+  partial: 'fields/_simple.html'
+- name: 'desc'
+  partial: 'fields/_description.html'
+- name: 'date'
+  label: 'Date'
+  partial: 'fields/_simple.html'
+- name: 'link'
+  label: 'Link'
+  partial: 'fields/_link.html'
+
+presentation_popup_fields:
+- name: 'name'
+  css_class: 'item-title'
+  partial: 'fields/_simple.html'
+- name: 'desc'
+  partial: 'fields/_description.html'
+- name: 'locations'
+  label: 'Location'
+  partial: 'fields/_location.html'
+- name: 'link'
+  label: 'Link'
+  partial: 'fields/_link.html'
+
+video_popup_fields:
+- name: 'name'
+  css_class: 'item-title'
+  partial: 'fields/_simple.html'
+- name: 'desc'
+  partial: 'fields/_description.html'
+- name: 'date'
+  label: 'Date'
+  partial: 'fields/_simple.html'
+- name: 'link'
+  label: 'Link'
+  partial: 'fields/_link.html'
+
+patent_popup_fields:
+- name: 'name'
+  css_class: 'item-title'
+  partial: 'fields/_simple.html'
+- name: 'abstract'
+  partial: 'fields/_description.html'
+- name: 'filingDate'
+  label: 'Filing Date'
+  partial: 'fields/_simple.html'
+- name: 'publicationDate'
+  label: 'Publication Date'
+  partial: 'fields/_simple.html'
+- name: 'link'
+  label: 'Link'
+  partial: 'fields/_link.html'
 ---
 
-Publications
+
+{% include _section.html
+  items=site.data.publications.articles
+  section_header="Articles"
+  table_fields=page.article_table_fields
+  popup_fields=page.article_popup_fields
+  items_partial='items/_items_table.html'
+%}
+
+{% include _section.html
+  items=site.data.publications.presentations
+  section_header="Presentations"
+  table_fields=page.presentation_table_fields
+  popup_fields=page.presentation_popup_fields
+  items_partial='items/_items_table.html'
+%}
+
+

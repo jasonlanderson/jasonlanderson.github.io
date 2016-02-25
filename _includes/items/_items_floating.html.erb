@@ -1,0 +1,12 @@
+<div class="type-container">
+  <% @items.each { |i| %>
+    <% @item = i %>
+    <%= render '/shared/item/item_floating', locals: {
+      items: @projects,
+      section_text_id: 'High School',
+      section_header: 'High School Projects',
+      table_id: 'high-school-table'
+    }
+    %>
+  <% } %>
+</div>

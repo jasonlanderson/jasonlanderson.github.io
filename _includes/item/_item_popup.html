@@ -1,0 +1,16 @@
+<div>
+  {% for f in include.fields %}
+    {% if include.item[f.name] and include.item[f.name] != "" %}
+      {% assign field_or_list=include.item[f.name] %}
+      {% assign css_class=f.css_class %}
+      {% assign field_label=f.label %}
+      {% assign field_parital=f.partial %}
+
+      {% include _field_or_field_list.html field_or_list=field_or_list css_class=css_class field_label=field_label field_parital=field_parital %}
+    {% endif %}
+  {% endfor %}
+
+  {% if include.item.images and include.item.images.size > 0 %}
+    {% include _image_bar.html images=include.item.images %}
+  {% endif %}
+</div>

@@ -1,0 +1,20 @@
+<div class="{{ include.css_class }}">
+{% assign is_list = include.field_or_list | is_list  %}
+{% if is_list %}
+  {% if include.field_label %}
+    {{ field_label }}s:
+  {% endif %}
+
+  {% for l in include.field_or_list %}
+    <li>
+      {% include {{include.field_parital}} field=l %}
+    </li>
+  {% endfor %}
+{% else %}
+  {% if include.field_label %}
+    {{ field_label }}:
+  {% endif %}
+  {% assign field = include.field_or_list | get_first_array_val %}
+  {% include {{include.field_parital}} field=field %}
+{% endif %}
+</div>

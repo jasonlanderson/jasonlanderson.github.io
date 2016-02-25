@@ -1,0 +1,7 @@
+{% assign value = include.field %}
+{% assign last_char = include.field | slice: -1 %}
+{% if last_char != "." %}
+  {% assign value=value | append: '.' %}
+{% endif %}
+
+{{ value }}

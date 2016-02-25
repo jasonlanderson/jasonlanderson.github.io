@@ -1,0 +1,65 @@
+<%# item = the item to display %>
+
+<div >
+  <% if item['starred'] == 'true' %>
+    <div class="starred-item"><i class="fa fa-star star-icon-image"></i></div>
+  <% end %>
+
+  <%
+    fields = [
+      {name: 'name',
+       css_class: 'item-title',
+       partial: 'shared/fields/simple'
+      },
+      {name: 'date',
+       partial: 'shared/fields/simple'
+      },
+      {name: 'publicationDate',
+       label: 'Date',
+       partial: 'shared/fields/simple'
+      },
+      {name: 'desc',
+       partial: 'shared/fields/description'
+      },
+      {name: 'organization',
+       label: 'Org',
+       partial: 'shared/fields/simple'
+      },
+      {name: 'publisher',
+       label: 'Publisher',
+       partial: 'shared/fields/simple'
+      },
+      {name: 'locations',
+       label: 'Location',
+       partial: 'shared/fields/location'
+      },
+      {name: 'destinations',
+       label: 'Destination',
+       partial: 'shared/fields/simple'
+      },
+      {name: 'tech',
+       label: 'Tech',
+       partial: 'shared/fields/simple'
+      },
+      {name: 'link',
+       label: 'Link',
+       partial: 'shared/fields/link'
+      },
+    ]
+  %>
+
+  <% fields.each do |f| %>
+    <% if item[f[:name]] && !item[f[:name]].empty? %>
+      <% @field_or_list = item[f[:name]] %>
+      <% @css_class = f[:css_class] ? f[:css_class] : "item-#{f[:name]}" %>
+      <% @field_label = f[:label] ? f[:label] : nil %>
+      <% @field_parital = f[:partial] ? f[:partial] : nil %>
+      <%= render 'shared/field_or_field_list' %>
+    <% end %>
+  <% end %>
+
+  <% if item['images'] && item['images'].count > 0 %>
+    <% @images = item['images'] %>
+    <%= render 'shared/image_bar' %>
+  <% end %>
+</div>

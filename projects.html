@@ -1,5 +1,39 @@
 ---
 layout: default
+
+project_table_fields:
+- field: 'name'
+  label: 'Name'
+  truncate_length: 60
+  mouseover_field: 'name'
+  link_field: 'link'
+- field: 'tech'
+  label: 'Technology'
+- field: 'date'
+  label: 'Date'
+
+project_popup_fields:
+- name: 'name'
+  css_class: 'item-title'
+  partial: 'fields/_simple.html'
+- name: 'desc'
+  partial: 'fields/_description.html'
+- name: 'date'
+  label: 'Date'
+  partial: 'fields/_simple.html'
+- name: 'tech'
+  label: 'Tech'
+  partial: 'fields/_simple.html'
 ---
 
-Projects
+{% assign project_by_type = site.data.projects.projects | group_by:"type" %}
+{% for subsection in project_by_type %}
+  {% assign section_header=subsection.name | append: ' Projects' %}
+  {% include _section.html
+    items=subsection.items
+    section_header=section_header
+    table_fields=page.project_table_fields
+    popup_fields=page.project_popup_fields
+    items_partial='items/_items_table.html'
+  %}
+{% endfor %}

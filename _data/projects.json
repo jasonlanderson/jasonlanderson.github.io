@@ -188,6 +188,16 @@
       "link": "",
       "images": []
     },
+    {
+      "type": "College",
+      "name": "Risk Game",
+      "desc": "A clone of the classic board game, Risk.  Built for an AI / Machine Learning class",
+      "date": "",
+      "tech": "Java",
+      "starred": "true",
+      "link": "",
+      "images": ["risk_game_1.jpg", "risk_game_2.jpg"]
+    },
 
 
 
@@ -278,7 +288,7 @@
       "type": "High School",
       "name": "Address Book",
       "desc": "A simple address book which served first as a learning experience for ColdFusion and then PHP",
-      "date": "",
+      "date": "2003",
       "tech": "PHP, ColdFusion, MySQL",
       "starred": "true",
       "link": "",
@@ -333,6 +343,16 @@
       "starred": "false",
       "link": "",
       "images": ["puzzle_knights.jpg"]
+    },
+    {
+      "type": "High School",
+      "name": "Myst-Like Adventure Game",
+      "desc": "An adventure, puzzle game build in the Myst, point-and-click style with static screenshots of a 3d rendered world",
+      "date": "11/2003 - 11/2004",
+      "tech": "Java, Blender 3D",
+      "starred": "true",
+      "link": "",
+      "images": ["myst_game_1.jpg", "myst_game_2.jpg", "myst_game_3.jpg"]
     },
     {
       "type": "High School",

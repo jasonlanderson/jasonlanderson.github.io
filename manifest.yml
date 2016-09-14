@@ -6,6 +6,6 @@ applications:
   path: _site
   domain: mybluemix.net
   instances: 1
-  memory: 128M
+  memory: 64M
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
 

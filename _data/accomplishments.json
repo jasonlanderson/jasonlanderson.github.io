@@ -40,6 +40,13 @@
       "link": ""
     },
     {
+      "name": "Machine Learning",
+      "desc": "A broad introduction to machine learning, data mining, and statistical pattern recognition. Topics include: (i) Supervised learning (parametric/non-parametric algorithms, support vector machines, kernels, neural networks). (ii) Unsupervised learning (clustering, dimensionality reduction, recommender systems, deep learning). (iii) Best practices in machine learning (bias/variance theory; innovation process in machine learning and AI)",
+      "date": "05/16 - 06/16",
+      "organization": "Stanford / Coursera",
+      "link": ["https://www.coursera.org/learn/machine-learning", "machine_learning_class_cert.pdf"]
+    },
+    {
       "name": "Architectural Thinking",
       "desc": "Defined a repeatable and consistent approach to developing IT architectures",
       "date": "12/2/14 - 12/12/14",

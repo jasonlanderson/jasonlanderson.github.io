@@ -1,5 +1,5 @@
 #!/bin/bash
 jekyll build
 cf api api.ng.bluemix.net
-cf target -o anderson.l.jason@gmail.com -s dev
+cf target -o janderson@compthree.com -s dev
 cf push

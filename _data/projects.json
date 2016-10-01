@@ -198,7 +198,24 @@
       "link": "",
       "images": ["risk_game_1.jpg", "risk_game_2.jpg"]
     },
-
+    {
+      "type": "College",
+      "name": "GENSO",
+      "desc": "A Global Educational Network for Satellite Operations forms a worldwide network of ground stations and spacecraft which can interact via a software standard",
+      "date": "",
+      "tech": "Java",
+      "starred": "true",
+      "link": ["https://en.wikipedia.org/wiki/Global_Educational_Network_for_Satellite_Operations", "http://www.esa.int/Education/How_GENSO_works"],
+    },
+    {
+      "type": "College",
+      "name": "File Encryption System",
+      "desc": "A public/private key system to encrypt a text file",
+      "date": "",
+      "tech": "Java",
+      "starred": "false",
+      "link": "",
+    },
 
 
     {

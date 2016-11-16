@@ -1,34 +1,33 @@
 {
-  "awards": [
+  "certifications": [
     {
-      "name": "Outstanding Graduate Award",
-      "desc": "For demonstrating academic excellence, creative achievement, and scholarly / professional potential",
-      "date": "6/2010",
-      "organization": "California Polytechnic State University",
-      "link": ""
+      "name": "IT Architect, Level 2",
+      "desc": "Mastered IT Architectural principles and consistently demonstrated them throughout professional projects",
+      "date": "10/2014",
+      "organization": "Open Group / IBM",
+      "link": "http://www.opengroup.org/certifications/professional/open-ca"
     },
     {
-      "name": "Bank of America Award - Computer Science",
-      "desc": "For demonstrating outstanding skills in Computer Science",
-      "date": "6/2005",
-      "organization": "Bellarmine",
-      "link": ""
-    },
-    {
-      "name": "Everyday Hero Award",
-      "desc": "For the delivery of PureApplication System",
-      "date": "10/2012",
+      "name": "IBM Master Inventor",
+      "desc": "An appointment to identify new inventions, mentor other employees through the patent process, foster innovative thinking, and help evaluate ideas for patenting",
+      "date": "10/2014",
       "organization": "IBM",
-      "link": ""
-    }
-  ],
-  "press": [
+      "link": "http://en.wikipedia.org/wiki/IBM_Master_Inventor"
+    },
     {
-      "name": "Outstanding Graduates 2010",
-      "desc": "Cal Poly Engineering News",
-      "date": "6/7/2010",
-      "organization": "California Polytechnic State University",
-      "link": "outstanding_graduate.pdf"
+      "name": "JNCIA",
+      "desc": "Juniper's initial certification for understanding of networking fundamentals",
+      "date": "11/11/2013",
+      "organization": "Juniper",
+      "link": "jncia_cert.pdf"
+    },
+    {
+      "name": "IT Specialist, Level 1",
+      "desc": "Ability to deliver effective development, implementation and operation of IT solutions",
+      "date": "11/1/2012",
+      "organization": "Open Group / IBM",
+      "link": ["http://www.opengroup.org/certifications/professional/open-cits",
+               "it_specialist.pdf"]
     }
   ],
   "education": [
@@ -82,35 +81,36 @@
       "link": "juniper_cert.pdf"
     }
   ],
-  "certifications": [
+  "awards": [
     {
-      "name": "IT Architect, Level 2",
-      "desc": "Mastered IT Architectural principles and consistently demonstrated them throughout professional projects",
-      "date": "10/2014",
-      "organization": "Open Group / IBM",
-      "link": "http://www.opengroup.org/certifications/professional/open-ca"
+      "name": "Outstanding Graduate Award",
+      "desc": "For demonstrating academic excellence, creative achievement, and scholarly / professional potential",
+      "date": "6/2010",
+      "organization": "California Polytechnic State University",
+      "link": ""
     },
     {
-      "name": "IBM Master Inventor",
-      "desc": "An appointment to identify new inventions, mentor other employees through the patent process, foster innovative thinking, and help evaluate ideas for patenting",
-      "date": "10/2014",
+      "name": "Bank of America Award - Computer Science",
+      "desc": "For demonstrating outstanding skills in Computer Science",
+      "date": "6/2005",
+      "organization": "Bellarmine",
+      "link": ""
+    },
+    {
+      "name": "Everyday Hero Award",
+      "desc": "For the delivery of PureApplication System",
+      "date": "10/2012",
       "organization": "IBM",
-      "link": "http://en.wikipedia.org/wiki/IBM_Master_Inventor"
-    },
+      "link": ""
+    }
+  ],
+  "press": [
     {
-      "name": "JNCIA",
-      "desc": "Juniper's initial certification for understanding of networking fundamentals",
-      "date": "11/11/2013",
-      "organization": "Juniper",
-      "link": "jncia_cert.pdf"
-    },
-    {
-      "name": "IT Specialist, Level 1",
-      "desc": "Ability to deliver effective development, implementation and operation of IT solutions",
-      "date": "11/1/2012",
-      "organization": "Open Group / IBM",
-      "link": ["http://www.opengroup.org/certifications/professional/open-cits",
-               "it_specialist.pdf"]
+      "name": "Outstanding Graduates 2010",
+      "desc": "Cal Poly Engineering News",
+      "date": "6/7/2010",
+      "organization": "California Polytechnic State University",
+      "link": "outstanding_graduate.pdf"
     }
   ]
 }

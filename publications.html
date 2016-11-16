@@ -17,6 +17,14 @@ presentation_table_fields:
   mouseover_field: 'name'
   link_field: 'link'
 
+video_table_fields:
+- field: 'name'
+  label: 'Name'
+  truncate_length: 60
+  mouseover_field: 'name'
+  link_field: 'link'
+
+
 article_popup_fields:
 - name: 'name'
   css_class: 'item-title'
@@ -90,4 +98,11 @@ patent_popup_fields:
   items_partial='items/_items_table.html'
 %}
 
+{% include _section.html
+  items=site.data.publications.videos
+  section_header="Videos"
+  table_fields=page.video_table_fields
+  popup_fields=page.video_popup_fields
+  items_partial='items/_items_table.html'
+%}
 

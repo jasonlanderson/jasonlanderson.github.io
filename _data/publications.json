@@ -45,9 +45,9 @@
     {
       "type": "IBM",
       "name": "Cloud Foundry on OpenStack Video Series",
-      "desc": "",
+      "desc": "In this video, we show how a Cloud Foundry operations team can install BOSH to simplify deploying and managing Cloud Foundry environments.",
       "date": "10/18/2013",
-      "publisher": "",
+      "publisher": "IBM",
       "link": "https://www.youtube.com/watch?v=ojU1e3L6HUc"
     }
   ],

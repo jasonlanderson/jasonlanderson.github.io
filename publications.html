@@ -23,7 +23,17 @@ video_table_fields:
   truncate_length: 60
   mouseover_field: 'name'
   link_field: 'link'
+- field: 'date'
+  label: 'Date'
 
+patent_table_fields:
+- field: 'name'
+  label: 'Name'
+  truncate_length: 60
+  mouseover_field: 'name'
+  link_field: 'link'
+- field: 'publicationDate'
+  label: 'Date'
 
 article_popup_fields:
 - name: 'name'
@@ -106,3 +116,10 @@ patent_popup_fields:
   items_partial='items/_items_table.html'
 %}
 
+{% include _section.html
+  items=site.data.publications.patents
+  section_header="Patents"
+  table_fields=page.patent_table_fields
+  popup_fields=page.patent_popup_fields
+  items_partial='items/_items_table.html'
+%}

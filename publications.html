@@ -96,18 +96,18 @@ patent_popup_fields:
 
 
 {% include _section.html
-  items=site.data.publications.articles
-  section_header="Articles"
-  table_fields=page.article_table_fields
-  popup_fields=page.article_popup_fields
-  items_partial='items/_items_table.html'
-%}
-
-{% include _section.html
   items=site.data.publications.presentations
   section_header="Presentations"
   table_fields=page.presentation_table_fields
   popup_fields=page.presentation_popup_fields
+  items_partial='items/_items_table.html'
+%}
+
+{% include _section.html
+  items=site.data.publications.articles
+  section_header="Articles"
+  table_fields=page.article_table_fields
+  popup_fields=page.article_popup_fields
   items_partial='items/_items_table.html'
 %}
 

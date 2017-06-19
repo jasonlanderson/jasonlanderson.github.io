@@ -29,7 +29,7 @@ trip_popup_fields:
 
 {% assign trips_by_type = site.data.travel.trips | group_by:"type" %}
 {% for subsection in trips_by_type %}
-  {% if subsection.name != "personal" %}
+  {% if subsection.name != "personal" and subsection.name != "business-hidden" %}
     {% assign section_header=subsection.name | capitalize %}
     {% include _section.html
       items=subsection.items

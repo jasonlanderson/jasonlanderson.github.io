@@ -5,7 +5,7 @@
       "desc": "",
       "date": "4/17/2017 - 4/19/2017",
       "destinations": ["Kansas City, MO"],
-      "type": "business",
+      "type": "business-hidden",
       "images": [""]
     },
     {
@@ -13,7 +13,7 @@
       "desc": "",
       "date": "4/11/2017 - 4/13/2017",
       "destinations": ["Kansas City, MO"],
-      "type": "business",
+      "type": "business-hidden",
       "images": [""]
     },
     {
@@ -21,7 +21,7 @@
       "desc": "",
       "date": "4/2/2017 - 4/4/2017",
       "destinations": ["Yorktown Heights, NY"],
-      "type": "business",
+      "type": "business-hidden",
       "images": [""],
       "link": [
         "http://59daysofcode.com/",
@@ -33,7 +33,7 @@
       "desc": "",
       "date": "10/2/2016 - 10/4/2016",
       "destinations": ["New York City, NY"],
-      "type": "business",
+      "type": "business-hidden",
       "images": [""]
     },
     {
@@ -41,7 +41,7 @@
       "desc": "",
       "date": "8/16/2016 - 8/18/2016",
       "destinations": ["New York City, NY"],
-      "type": "business",
+      "type": "business-hidden",
       "images": [""]
     },
     {
@@ -49,7 +49,7 @@
       "desc": "",
       "date": "4/5/2016 - 4/7/2016",
       "destinations": ["Denver, CO"],
-      "type": "business",
+      "type": "business-hidden",
       "images": [""]
     },
     {
@@ -57,7 +57,7 @@
       "desc": "",
       "date": "6/17/2015 - 6/18/2015",
       "destinations": ["El Segundo, CA"],
-      "type": "business",
+      "type": "business-hidden",
       "images": [""]
     },
     {
@@ -65,7 +65,7 @@
       "desc": "",
       "date": "5/27/2015 - 5/28/2015",
       "destinations": ["El Segundo, CA"],
-      "type": "business",
+      "type": "business-hidden",
       "images": [""]
     },
     {

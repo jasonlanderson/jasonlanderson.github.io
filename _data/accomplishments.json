@@ -1,6 +1,13 @@
 {
   "certifications": [
     {
+      "name": "Hortonworks Certified Associate",
+      "desc": "An HCA understands the technologies and can recognize business use cases for the many frameworks in the Hortonworks Data Platform (HDP)",
+      "date": "11/11/2016",
+      "organization": "Hortonworks",
+      "link": "https://hortonworks.com/services/training/certification/hca-certification/"
+    },
+    {
       "name": "IT Architect, Level 2",
       "desc": "Mastered IT Architectural principles and consistently demonstrated them throughout professional projects",
       "date": "10/2014",

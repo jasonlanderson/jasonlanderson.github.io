@@ -53,6 +53,33 @@
   ],
   "presentations": [
     {
+      "type": "Comp Three",
+      "name": "Getting Started with Natural Language Processing",
+      "desc": "With the advent of bot frameworks and voice-only devices, we are seeing a change with how humans interact with computers. Instead of humans learning computer interfaces—which can be largely non-intuitive—computers are instead learning how humans innately communicate with language. Powering this change is the field of Natural Language Processing (NLP).  I will first introduce NLP and discuss its various approaches. I will then cover current challenges in the field such as handling content containing domain specific jargon and the techniques to tackle those challenges such as Deep Learning. Lastly, I will show how to start using NLP technology for content understanding / generation with existing API ecosystems. ",
+      "locations": [
+        {
+          "name": "Quadrus Conference Center - Menlo Park, CA",
+          "link": "http://informationdevelopmentworld.com/",
+          "slides": "https://www.slideshare.net/InfoDevWorld/getting-started-with-natural-language-processing-with-jason-anderson",
+          "date": "5/17/17"
+        }
+      ]
+    },
+    {
+      "type": "Comp Three",
+      "name": "Add Watson to your Apps",
+      "desc": "In his session, Jason will detail how to build applications using IBM Watson services. He’ll begin by briefly covering how Watson has evolved from the time of Jeopardy into a suite of capabilities and offerings. Then he’ll cover how developers can easily leverage Watson in their apps using the Watson Developer Cloud. Finally, he will do a demo showcasing the development process.",
+      "locations": [
+        {
+          "name": "Hacker Dojo - Mountain View, CA",
+          "link": "https://www.meetup.com/Cognitive-Computing-Enthusiasts/events/228691738/",
+          "slides": "https://www.slideshare.net/andersonljason/add-watson-to-your-apps",
+          "video": "https://www.youtube.com/watch?v=GF03pzraAuI",
+          "date": "3/23/16"
+        }
+      ]
+    },
+    {
       "type": "IBM",
       "name": "Cloud Foundry and OpenStack: How They Fit",
       "desc": "",

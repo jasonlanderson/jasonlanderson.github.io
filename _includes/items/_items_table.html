@@ -18,7 +18,11 @@
     <tr>
       {% for field in include.table_fields %}
         <td>
-          {% assign cell_value = item[field.field]] %}
+          {% if field.field == "firstLocationDate" %}
+            {% assign cell_value = item["locations"][0]["date"] %}
+          {% else %}
+            {% assign cell_value = item[field.field] %}
+          {% endif %}
 
           {% comment %} Truncate if needed {% endcomment %}
           {% if field.truncate_length %}
@@ -26,7 +30,7 @@
           {% endif %}
 
           {% comment %} Format date if the cell is a date {% endcomment %}
-          {% if field.field == "date" %}
+          {% if field.field == "date" or field.field == "firstLocationDate" %}
             {% assign cell_value = cell_value | format_date %}
           {% endif %}
           

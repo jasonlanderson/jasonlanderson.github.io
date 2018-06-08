@@ -54,6 +54,23 @@
   "presentations": [
     {
       "type": "Comp Three",
+      "name": "AI vs Machine Learning [Panel Moderator]",
+      "desc": "General discussion about how AI and Machine Learning differ.  Panelists then provide their top current challenges they're facing related to AI and the tooling they're using to address these challenges.  Finally a discussion about the future of AI and its role in society.",
+      "link": [
+        "https://www.linkedin.com/pulse/machine-learning-ai-panel-discussion-vivek-kumar-1/"
+      ],
+      "locations": [
+        {
+          "name": "Smart City Conference - San Jose, CA",
+          "link": [
+            "http://www.smartcityconference2018.com/"
+          ],
+          "date": "5/11/18"
+        }
+      ]
+    },
+    {
+      "type": "Comp Three",
       "name": "Getting Started with Natural Language Processing",
       "desc": "With the advent of bot frameworks and voice-only devices, we are seeing a change with how humans interact with computers. Instead of humans learning computer interfaces—which can be largely non-intuitive—computers are instead learning how humans innately communicate with language. Powering this change is the field of Natural Language Processing (NLP).  I will first introduce NLP and discuss its various approaches. I will then cover current challenges in the field such as handling content containing domain specific jargon and the techniques to tackle those challenges such as Deep Learning. Lastly, I will show how to start using NLP technology for content understanding / generation with existing API ecosystems. ",
       "locations": [

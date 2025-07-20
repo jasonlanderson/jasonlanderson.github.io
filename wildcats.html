@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Soccer Lineup Generator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        td,
+        th {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .field {
+            display: grid;
+            grid-template-columns: repeat(6, 80px);
+            grid-auto-rows: 60px;
+            gap: 2px;
+            margin-bottom: 40px;
+        }
+
+        .player {
+            background: #e0f7fa;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            padding: 4px;
+        }
+
+        .quarter-title {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .player-selection {
+            margin-bottom: 20px;
+        }
+
+        .player-selection label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Soccer Lineup Generator</h1>
+    <div class="player-selection" id="player-selection"></div>
+    <div id="lineups"></div>
+
+    <script>
+        // formations and players go here (use the JS objects from earlier)
+        // formations and players go here (use the JS objects from earlier)
+        const formations = {
+            "3-3-2": [
+                { "position_abbr": "G", "position_name": "Goalie", "category": "pc_goalie", "row": 1, "column": 3 },
+                { "position_abbr": "LD", "position_name": "Left Defense", "category": "pc_defense", "row": 2, "column": 1 },
+                { "position_abbr": "CD", "position_name": "Center Defense", "category": "pc_defense", "row": 2, "column": 3 },
+                { "position_abbr": "RD", "position_name": "Right Defense", "category": "pc_defense", "row": 2, "column": 5 },
+                { "position_abbr": "LM", "position_name": "Left Center Mid", "category": "pc_mid_wing", "row": 3, "column": 1 },
+                { "position_abbr": "CM", "position_name": "Center Mid", "category": "pc_mid_center", "row": 3, "column": 3 },
+                { "position_abbr": "RM", "position_name": "Right Center Mid", "category": "pc_mid_wing", "row": 3, "column": 5 },
+                { "position_abbr": "LS", "position_name": "Left Forward", "category": "pc_offense", "row": 4, "column": 2 },
+                { "position_abbr": "RS", "position_name": "Right Forward", "category": "pc_offense", "row": 4, "column": 4 }
+            ],
+            "3-4-1": [
+                { "position_abbr": "G", "position_name": "Goalie", "category": "pc_goalie", "row": 1, "column": 2 },
+                { "position_abbr": "LD", "position_name": "Left Defense", "category": "pc_defense", "row": 2, "column": 1 },
+                { "position_abbr": "CD", "position_name": "Center Defense", "category": "pc_defense", "row": 2, "column": 2 },
+                { "position_abbr": "RD", "position_name": "Right Defense", "category": "pc_defense", "row": 2, "column": 3 },
+                { "position_abbr": "LM", "position_name": "Left Mid", "category": "pc_mid_wing", "row": 4, "column": 1 },
+                { "position_abbr": "BCM", "position_name": "Back Center Mid", "category": "pc_mid_center", "row": 3, "column": 2 },
+                { "position_abbr": "FCM", "position_name": "Forward Center Mid", "category": "pc_mid_center", "row": 5, "column": 2 },
+                { "position_abbr": "RM", "position_name": "Right Mid", "category": "pc_mid_wing", "row": 4, "column": 3 },
+                { "position_abbr": "S", "position_name": "Forward", "category": "pc_offense", "row": 6, "column": 2 }
+            ]
+        };
+        const players = [
+            {
+                "name": "Addison",
+                "full_name": "Addison Roeder",
+                "number": 11,
+                "preferences": { "pc_goalie": 0, "pc_defense": 5, "pc_mid_center": 5, "pc_mid_wing": 0, "pc_offense": 5 }
+            },
+            {
+                "name": "Amelia",
+                "full_name": "Amelia Martin",
+                "number": 14,
+                "preferences": { "pc_goalie": 10, "pc_defense": 10, "pc_mid_center": 0, "pc_mid_wing": 0, "pc_offense": 0 }
+            },
+            {
+                "name": "Ainsley",
+                "full_name": "Ainsley Quinn",
+                "number": 8,
+                "preferences": { "pc_goalie": 0, "pc_defense": 10, "pc_mid_center": 0, "pc_mid_wing": 0, "pc_offense": 0 }
+            },
+            {
+                "name": "Anna",
+                "full_name": "Alyanna Gomez",
+                "number": 12,
+                "preferences": { "pc_goalie": 0, "pc_defense": 10, "pc_mid_center": 5, "pc_mid_wing": 0, "pc_offense": 5 }
+            },
+            {
+                "name": "Arleen",
+                "full_name": "Arleen Vazquez Pelaez",
+                "number": 20,
+                "preferences": { "pc_goalie": 0, "pc_defense": 0, "pc_mid_center": 7, "pc_mid_wing": 7, "pc_offense": 5 }
+            },
+            {
+                "name": "Carmelina",
+                "full_name": "Carmelina Mello",
+                "number": 7,
+                "preferences": { "pc_goalie": 0, "pc_defense": 10, "pc_mid_center": 0, "pc_mid_wing": 0, "pc_offense": 0 }
+            },
+            {
+                "name": "Ella",
+                "full_name": "Ella Hollywood",
+                "number": 4,
+                "preferences": { "pc_goalie": 10, "pc_defense": 10, "pc_mid_center": 0, "pc_mid_wing": 5, "pc_offense": 0 }
+            },
+            {
+                "name": "Emma",
+                "full_name": "Emma Walsh",
+                "number": 99,
+                "preferences": { "pc_goalie": 0, "pc_defense": 10, "pc_mid_center": 5, "pc_mid_wing": 5, "pc_offense": 0 }
+            },
+            {
+                "name": "Hailey",
+                "full_name": "Hailey Hayes",
+                "number": 89,
+                "preferences": { "pc_goalie": 0, "pc_defense": 0, "pc_mid_center": 0, "pc_mid_wing": 10, "pc_offense": 3 }
+            },
+            {
+                "name": "Eva",
+                "full_name": "Eva Anderson",
+                "number": 35,
+                "preferences": { "pc_goalie": 0, "pc_defense": 0, "pc_mid_center": 0, "pc_mid_wing": 10, "pc_offense": 3 }
+            },
+            {
+                "name": "Jackie",
+                "full_name": "Jacquelyn Quimby",
+                "number": 1,
+                "preferences": { "pc_goalie": 0, "pc_defense": 5, "pc_mid_center": 10, "pc_mid_wing": 0, "pc_offense": 0 }
+            },
+            {
+                "name": "Madeleine",
+                "full_name": "Madeleine Gusmer",
+                "number": 6,
+                "preferences": { "pc_goalie": 5, "pc_defense": 3, "pc_mid_center": 0, "pc_mid_wing": 0, "pc_offense": 10 }
+            },
+            {
+                "name": "Neve",
+                "full_name": "Neve Frias",
+                "number": 3,
+                "preferences": { "pc_goalie": 0, "pc_defense": 0, "pc_mid_center": 0, "pc_mid_wing": 10, "pc_offense": 5 }
+            },
+            {
+                "name": "Quynn",
+                "full_name": "Quynn Smith",
+                "number": 13,
+                "preferences": { "pc_goalie": 0, "pc_defense": 5, "pc_mid_center": 0, "pc_mid_wing": 5, "pc_offense": 0 }
+            }
+        ];
+
+        const MAX_QUARTERS = 4;
+
+        function getRandomFromTop(candidates, topN = 3) {
+            const top = candidates.slice(0, topN);
+            return top[Math.floor(Math.random() * top.length)];
+        }
+
+        function generateLineups(players, formationName, formations) {
+            const formation = formations[formationName];
+            const playerStats = players.map(p => ({ ...p, quartersPlayed: 0 }));
+            const lineups = [];
+
+            for (let q = 0; q < MAX_QUARTERS; q++) {
+                const isNewHalf = q % 2 === 0;
+                let goalie;
+
+                if (isNewHalf) {
+                    const goalieOptions = playerStats.filter(p => p.preferences.pc_goalie > 0 && p.quartersPlayed < 4)
+                        .sort((a, b) => b.preferences.pc_goalie - a.preferences.pc_goalie);
+                    goalie = getRandomFromTop(goalieOptions);
+                }
+
+                const assigned = new Set([goalie?.name]);
+                if (goalie) goalie.quartersPlayed++;
+
+                const lineup = formation.map(pos => {
+                    if (pos.category === "pc_goalie") {
+                        return { ...pos, player: goalie };
+                    }
+
+                    const candidates = playerStats.filter(p => !assigned.has(p.name) && p.preferences[pos.category] > 0 && p.quartersPlayed < 4)
+                        .sort((a, b) => b.preferences[pos.category] - a.preferences[pos.category]);
+
+                    let best = getRandomFromTop(candidates);
+
+                    if (!best) {
+                        const fallback = playerStats.filter(p => !assigned.has(p.name) && p.quartersPlayed < 4);
+                        best = fallback.length > 0 ? getRandomFromTop(fallback) : null;
+                    }
+
+                    if (best) {
+                        assigned.add(best.name);
+                        best.quartersPlayed++;
+                    }
+
+                    return { ...pos, player: best || { name: "N/A" } };
+                });
+
+                lineups.push(lineup);
+            }
+
+            return lineups;
+        }
+
+        function renderLineups(lineups, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = "";
+            lineups.forEach((lineup, i) => {
+                const title = document.createElement('div');
+                title.className = 'quarter-title';
+                title.textContent = `Quarter ${i + 1}`;
+                container.appendChild(title);
+
+                const field = document.createElement('div');
+                field.className = 'field';
+
+                const grid = Array.from({ length: 6 * 6 }, () => null);
+
+                lineup.forEach(pos => {
+                    const reversedRow = 6 - pos.row;
+                    const index = reversedRow * 6 + (pos.column - 1);
+                    grid[index] = pos;
+                });
+
+                grid.forEach(pos => {
+                    const cell = document.createElement('div');
+                    if (pos) {
+                        cell.className = 'player';
+                        cell.textContent = `${pos.player?.name || "Empty"} (${pos.position_abbr})`;
+                    }
+                    field.appendChild(cell);
+                });
+
+                container.appendChild(field);
+            });
+        }
+
+        function renderPlayerSelection() {
+            const container = document.getElementById('player-selection');
+            container.innerHTML = '';
+            players.forEach(player => {
+                const label = document.createElement('label');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = true;
+                checkbox.value = player.name;
+                checkbox.addEventListener('change', regenerateLineups);
+                label.appendChild(checkbox);
+                label.append(` ${player.name}`);
+                container.appendChild(label);
+            });
+        }
+
+        function regenerateLineups() {
+            const checkboxes = document.querySelectorAll('#player-selection input[type="checkbox"]');
+            const selectedPlayers = players.filter(p => Array.from(checkboxes).find(cb => cb.value === p.name && cb.checked));
+            const lineups = generateLineups(selectedPlayers, "3-3-2", formations);
+            renderLineups(lineups, "lineups");
+        }
+
+        renderPlayerSelection();
+        regenerateLineups();
+    </script>
+</body>
+
+</html>

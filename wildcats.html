@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Soccer Lineup Generator</title>
     <style>
-        body {
+                body {
             font-family: sans-serif;
         }
 
@@ -79,31 +79,21 @@
 
 <body>
     <h1>Soccer Lineup Generator</h1>
+    <div class="player-selection" id="player-selection"></div>
     <div>
         <label for="formation-select"><b>Formation:</b></label>
         <select id="formation-select"></select>
     </div>
-    <div class="player-selection" id="player-selection"></div>
     <div>
         <button id="regenerate-btn" type="button">Regenerate Lineup</button>
     </div>
     <div id="lineups"></div>
+    
 
     <script>
         // formations and players go here (use the JS objects from earlier)
         // formations and players go here (use the JS objects from earlier)
         const formations = {
-            "3-3-2": [
-                { "position_abbr": "G", "position_name": "Goalie", "category": "pc_goalie", "row": 1, "column": 3 },
-                { "position_abbr": "LD", "position_name": "Left Defense", "category": "pc_defense", "row": 2, "column": 1 },
-                { "position_abbr": "CD", "position_name": "Center Defense", "category": "pc_defense", "row": 2, "column": 3 },
-                { "position_abbr": "RD", "position_name": "Right Defense", "category": "pc_defense", "row": 2, "column": 5 },
-                { "position_abbr": "LM", "position_name": "Left Center Mid", "category": "pc_mid_wing", "row": 3, "column": 1 },
-                { "position_abbr": "CM", "position_name": "Center Mid", "category": "pc_mid_center", "row": 3, "column": 3 },
-                { "position_abbr": "RM", "position_name": "Right Center Mid", "category": "pc_mid_wing", "row": 3, "column": 5 },
-                { "position_abbr": "LS", "position_name": "Left Forward", "category": "pc_offense", "row": 4, "column": 2 },
-                { "position_abbr": "RS", "position_name": "Right Forward", "category": "pc_offense", "row": 4, "column": 4 }
-            ],
             "3-4-1": [
                 { "position_abbr": "G", "position_name": "Goalie", "category": "pc_goalie", "row": 1, "column": 2 },
                 { "position_abbr": "LD", "position_name": "Left Defense", "category": "pc_defense", "row": 2, "column": 1 },
@@ -114,6 +104,17 @@
                 { "position_abbr": "FCM", "position_name": "Forward Center Mid", "category": "pc_mid_center", "row": 5, "column": 2 },
                 { "position_abbr": "RM", "position_name": "Right Mid", "category": "pc_mid_wing", "row": 4, "column": 3 },
                 { "position_abbr": "S", "position_name": "Forward", "category": "pc_offense", "row": 6, "column": 2 }
+            ],
+            "3-3-2": [
+                { "position_abbr": "G", "position_name": "Goalie", "category": "pc_goalie", "row": 1, "column": 3 },
+                { "position_abbr": "LD", "position_name": "Left Defense", "category": "pc_defense", "row": 2, "column": 1 },
+                { "position_abbr": "CD", "position_name": "Center Defense", "category": "pc_defense", "row": 2, "column": 3 },
+                { "position_abbr": "RD", "position_name": "Right Defense", "category": "pc_defense", "row": 2, "column": 5 },
+                { "position_abbr": "LM", "position_name": "Left Center Mid", "category": "pc_mid_wing", "row": 3, "column": 1 },
+                { "position_abbr": "CM", "position_name": "Center Mid", "category": "pc_mid_center", "row": 3, "column": 3 },
+                { "position_abbr": "RM", "position_name": "Right Center Mid", "category": "pc_mid_wing", "row": 3, "column": 5 },
+                { "position_abbr": "LS", "position_name": "Left Forward", "category": "pc_offense", "row": 4, "column": 2 },
+                { "position_abbr": "RS", "position_name": "Right Forward", "category": "pc_offense", "row": 4, "column": 4 }
             ]
         };
         const players = [
@@ -199,7 +200,7 @@
                 "name": "Quynn",
                 "full_name": "Quynn Smith",
                 "number": 13,
-                "preferences": { "pc_goalie": 0, "pc_defense": 7, "pc_mid_center": 0, "pc_mid_wing": 7, "pc_offense": 0 }
+                "preferences": { "pc_goalie": 0, "pc_defense": 5, "pc_mid_center": 0, "pc_mid_wing": 5, "pc_offense": 0 }
             }
         ];
 
@@ -257,132 +258,6 @@
             return lineups;
         }
 
-        // Ensured version: each player plays exactly 2 quarters, never double-assigns a player per quarter, and uses 0-preference as last resort
-        // The goalie is the same for Q1+Q2, and a (possibly different) same goalie for Q3+Q4
-        function generateLineupsEnsured(players, formationName, formations) {
-            const formation = formations[formationName];
-            const MAX_ATTEMPTS = 1000;
-            const validLineups = [];
-            let bestLineup = null;
-            let bestScore = -Infinity;
-            let bestNA = Infinity;
-            let bestQScore = -Infinity;
-
-            function scoreLineup(lineups) {
-                let score = 0;
-                lineups.forEach(lineup => {
-                    lineup.forEach(pos => {
-                        if (pos.player && pos.player.preferences && pos.player.preferences[pos.category] !== undefined) {
-                            score += pos.player.preferences[pos.category];
-                        }
-                    });
-                });
-                return score;
-            }
-
-            for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
-                // Track how many quarters each player has played
-                const playerStats = players.map(p => ({ ...p, quartersPlayed: 0 }));
-                const lineups = [];
-                // 1. Pick a goalie for Q1+Q2 (must be able to play 2 quarters)
-                let goalie1Candidates = playerStats.filter(p => p.preferences.pc_goalie > 0 && p.quartersPlayed < 2)
-                    .sort((a, b) => b.preferences.pc_goalie - a.preferences.pc_goalie);
-                let goalie1 = getRandomFromTop(goalie1Candidates);
-                if (!goalie1) goalie1 = playerStats[0];
-                // 2. Pick a goalie for Q3+Q4 (cannot be goalie1 if possible, must be able to play 2 quarters)
-                let goalie2Candidates = playerStats.filter(p => p.name !== goalie1.name && p.preferences.pc_goalie > 0 && p.quartersPlayed < 2)
-                    .sort((a, b) => b.preferences.pc_goalie - a.preferences.pc_goalie);
-                let goalie2 = getRandomFromTop(goalie2Candidates);
-                if (!goalie2) {
-                    goalie2 = goalie1;
-                }
-                // Assignments: for each quarter, assign players to positions
-                // Track for each player which quarters they are assigned to
-                const playerQuarterAssignments = {};
-                players.forEach(p => playerQuarterAssignments[p.name] = []);
-                let hasNA = false;
-                let naCount = 0;
-                for (let q = 0; q < MAX_QUARTERS; q++) {
-                    // For each quarter, start with all players available who have played < 2 quarters
-                    const available = playerStats.filter(p => p.quartersPlayed < 2);
-                    const lineup = [];
-                    // Determine which goalie to use
-                    let goalie = (q < 2) ? goalie1 : goalie2;
-                    // Only assign goalie if they have not already played 2 quarters
-                    if (goalie.quartersPlayed >= 2) {
-                        // Pick another eligible goalie
-                        let altGoalie = available.filter(p => p.preferences.pc_goalie > 0).sort((a, b) => b.preferences.pc_goalie - a.preferences.pc_goalie)[0];
-                        if (!altGoalie) altGoalie = available[0];
-                        goalie = altGoalie;
-                    }
-                    // Remove goalie from available for this quarter
-                    const goalieIdx = available.findIndex(p => p.name === goalie.name);
-                    if (goalieIdx !== -1) available.splice(goalieIdx, 1);
-                    goalie.quartersPlayed++;
-                    playerQuarterAssignments[goalie.name].push(q);
-                    for (const pos of formation) {
-                        if (pos.category === "pc_goalie") {
-                            lineup.push({ ...pos, player: goalie });
-                            continue;
-                        }
-                        // 1. Try to find an available player with preference > 0 for this category
-                        let candidates = available.filter(p => p.preferences[pos.category] > 0)
-                            .sort((a, b) => b.preferences[pos.category] - a.preferences[pos.category]);
-                        let best = getRandomFromTop(candidates);
-                        // 2. If none, pick any available player (even if preference is 0)
-                        if (!best) {
-                            best = available[0] || null;
-                        }
-                        if (best) {
-                            // Remove from available for this quarter
-                            const idx = available.findIndex(p => p.name === best.name);
-                            if (idx !== -1) available.splice(idx, 1);
-                            best.quartersPlayed++;
-                            playerQuarterAssignments[best.name].push(q);
-                        }
-                        lineup.push({ ...pos, player: best || { name: "N/A" } });
-                        if (!best) { hasNA = true; naCount++; }
-                    }
-                    lineups.push(lineup);
-                }
-                // Check if all players have exactly 2 quarters and no N/A
-                const playerQuarters = playerStats.map(p => p.quartersPlayed);
-                const minQ = Math.min(...playerQuarters);
-                const maxQ = Math.max(...playerQuarters);
-                const qScore = playerStats.filter(p => p.quartersPlayed === 2).length;
-                const score = scoreLineup(lineups);
-                if (!hasNA && minQ === 2 && maxQ === 2) {
-                    validLineups.push({ lineups, score });
-                } else {
-                    // Track the best attempt (most players at 2 quarters, fewest N/A, highest score)
-                    if (
-                        qScore > bestQScore ||
-                        (qScore === bestQScore && naCount < bestNA) ||
-                        (qScore === bestQScore && naCount === bestNA && score > bestScore)
-                    ) {
-                        bestLineup = lineups;
-                        bestQScore = qScore;
-                        bestNA = naCount;
-                        bestScore = score;
-                    }
-                }
-            }
-            // Sort by score descending
-            validLineups.sort((a, b) => b.score - a.score);
-            // Pick randomly from the top 3
-            let chosen;
-            if (validLineups.length === 0) {
-                // fallback: return best attempt
-                return bestLineup || [];
-            } else if (validLineups.length <= 3) {
-                chosen = validLineups[Math.floor(Math.random() * validLineups.length)].lineups;
-            } else {
-                const top3 = validLineups.slice(0, 3);
-                chosen = top3[Math.floor(Math.random() * 3)].lineups;
-            }
-            return chosen;
-        }
-
         function renderLineups(lineups, containerId) {
             const container = document.getElementById(containerId);
             container.innerHTML = "";
@@ -407,7 +282,7 @@
                     const cell = document.createElement('div');
                     if (pos) {
                         cell.className = 'player';
-                        // Add background image if player has a number
+
                         if (pos.player && pos.player.number) {
                             const img = document.createElement('img');
                             img.src = `wildcats/${pos.player.number}.png`;
@@ -415,6 +290,7 @@
                             img.alt = '';
                             cell.appendChild(img);
                         }
+
                         const content = document.createElement('div');
                         content.className = 'player-content';
                         content.textContent = `${pos.player?.name || "Empty"} (${pos.position_abbr})`;
@@ -427,22 +303,29 @@
             });
         }
 
-        function renderPlayerSelection(quartersCountMap = {}, checkedMap = null) {
+        function renderPlayerSelection() {
             const container = document.getElementById('player-selection');
             container.innerHTML = '';
             players.forEach(player => {
                 const label = document.createElement('label');
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
-                // Preserve checked state if checkedMap is provided, otherwise default to checked
-                checkbox.checked = checkedMap ? !!checkedMap[player.name] : true;
+                checkbox.checked = true;
                 checkbox.value = player.name;
                 checkbox.addEventListener('change', regenerateLineups);
                 label.appendChild(checkbox);
-                const quarters = quartersCountMap[player.name] || 0;
-                label.append(` ${player.name} (${quarters})`);
+                label.append(` ${player.name}`);
                 container.appendChild(label);
             });
+        }
+
+        function regenerateLineups() {
+            const checkboxes = document.querySelectorAll('#player-selection input[type="checkbox"]');
+            const selectedPlayers = players.filter(p => Array.from(checkboxes).find(cb => cb.value === p.name && cb.checked));
+            const select = document.getElementById('formation-select');
+            const selectedFormation = select.value;
+            const lineups = generateLineups(selectedPlayers, selectedFormation, formations);
+            renderLineups(lineups, "lineups");
         }
 
         function renderFormationDropdown() {
@@ -458,29 +341,8 @@
             select.addEventListener('change', regenerateLineups);
         }
 
-        function regenerateLineups() {
-            const checkboxes = document.querySelectorAll('#player-selection input[type="checkbox"]');
-            const checkedMap = {};
-            checkboxes.forEach(cb => { checkedMap[cb.value] = cb.checked; });
-            const selectedPlayers = players.filter(p => checkedMap[p.name]);
-            const select = document.getElementById('formation-select');
-            const selectedFormation = select.value;
-            const lineups = generateLineupsEnsured(selectedPlayers, selectedFormation, formations);
-            // Count quarters per player
-            const quartersCountMap = {};
-            lineups.forEach(lineup => {
-                lineup.forEach(pos => {
-                    if (pos.player && pos.player.name) {
-                        quartersCountMap[pos.player.name] = (quartersCountMap[pos.player.name] || 0) + 1;
-                    }
-                });
-            });
-            renderPlayerSelection(quartersCountMap, checkedMap);
-            renderLineups(lineups, "lineups");
-        }
-
-        renderFormationDropdown();
         renderPlayerSelection();
+        renderFormationDropdown();
         regenerateLineups();
         document.getElementById('regenerate-btn').addEventListener('click', regenerateLineups);
     </script>

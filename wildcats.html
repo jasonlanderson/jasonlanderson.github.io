@@ -34,6 +34,31 @@
             border: 1px solid #00796b;
             border-radius: 5px;
             padding: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        .player-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            filter: grayscale(1) brightness(1.5);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .player-content {
+            position: relative;
+            z-index: 1;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            text-align: center;
         }
 
         .quarter-title {
@@ -55,13 +80,13 @@
 <body>
     <h1>Soccer Lineup Generator</h1>
     <div>
-        <button id="regenerate-btn" type="button">Regenerate Lineup</button>
-    </div>
-    <div>
         <label for="formation-select"><b>Formation:</b></label>
         <select id="formation-select"></select>
     </div>
     <div class="player-selection" id="player-selection"></div>
+    <div>
+        <button id="regenerate-btn" type="button">Regenerate Lineup</button>
+    </div>
     <div id="lineups"></div>
 
     <script>
@@ -236,9 +261,25 @@
         // The goalie is the same for Q1+Q2, and a (possibly different) same goalie for Q3+Q4
         function generateLineupsEnsured(players, formationName, formations) {
             const formation = formations[formationName];
-            let bestLineups = null;
-            let bestScore = -1;
             const MAX_ATTEMPTS = 1000;
+            const validLineups = [];
+            let bestLineup = null;
+            let bestScore = -Infinity;
+            let bestNA = Infinity;
+            let bestQScore = -Infinity;
+
+            function scoreLineup(lineups) {
+                let score = 0;
+                lineups.forEach(lineup => {
+                    lineup.forEach(pos => {
+                        if (pos.player && pos.player.preferences && pos.player.preferences[pos.category] !== undefined) {
+                            score += pos.player.preferences[pos.category];
+                        }
+                    });
+                });
+                return score;
+            }
+
             for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
                 // Track how many quarters each player has played
                 const playerStats = players.map(p => ({ ...p, quartersPlayed: 0 }));
@@ -259,6 +300,8 @@
                 // Track for each player which quarters they are assigned to
                 const playerQuarterAssignments = {};
                 players.forEach(p => playerQuarterAssignments[p.name] = []);
+                let hasNA = false;
+                let naCount = 0;
                 for (let q = 0; q < MAX_QUARTERS; q++) {
                     // For each quarter, start with all players available who have played < 2 quarters
                     const available = playerStats.filter(p => p.quartersPlayed < 2);
@@ -298,24 +341,46 @@
                             playerQuarterAssignments[best.name].push(q);
                         }
                         lineup.push({ ...pos, player: best || { name: "N/A" } });
+                        if (!best) { hasNA = true; naCount++; }
                     }
                     lineups.push(lineup);
                 }
-                // Check if all players have exactly 2 quarters
+                // Check if all players have exactly 2 quarters and no N/A
                 const playerQuarters = playerStats.map(p => p.quartersPlayed);
                 const minQ = Math.min(...playerQuarters);
                 const maxQ = Math.max(...playerQuarters);
-                const score = playerStats.filter(p => p.quartersPlayed === 2).length;
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestLineups = lineups;
-                }
-                if (minQ === 2 && maxQ === 2) {
-                    return lineups;
+                const qScore = playerStats.filter(p => p.quartersPlayed === 2).length;
+                const score = scoreLineup(lineups);
+                if (!hasNA && minQ === 2 && maxQ === 2) {
+                    validLineups.push({ lineups, score });
+                } else {
+                    // Track the best attempt (most players at 2 quarters, fewest N/A, highest score)
+                    if (
+                        qScore > bestQScore ||
+                        (qScore === bestQScore && naCount < bestNA) ||
+                        (qScore === bestQScore && naCount === bestNA && score > bestScore)
+                    ) {
+                        bestLineup = lineups;
+                        bestQScore = qScore;
+                        bestNA = naCount;
+                        bestScore = score;
+                    }
                 }
             }
-            // If we get here, return the best attempt
-            return bestLineups;
+            // Sort by score descending
+            validLineups.sort((a, b) => b.score - a.score);
+            // Pick randomly from the top 3
+            let chosen;
+            if (validLineups.length === 0) {
+                // fallback: return best attempt
+                return bestLineup || [];
+            } else if (validLineups.length <= 3) {
+                chosen = validLineups[Math.floor(Math.random() * validLineups.length)].lineups;
+            } else {
+                const top3 = validLineups.slice(0, 3);
+                chosen = top3[Math.floor(Math.random() * 3)].lineups;
+            }
+            return chosen;
         }
 
         function renderLineups(lineups, containerId) {
@@ -342,7 +407,18 @@
                     const cell = document.createElement('div');
                     if (pos) {
                         cell.className = 'player';
-                        cell.textContent = `${pos.player?.name || "Empty"} (${pos.position_abbr})`;
+                        // Add background image if player has a number
+                        if (pos.player && pos.player.number) {
+                            const img = document.createElement('img');
+                            img.src = `wildcats/${pos.player.number}.png`;
+                            img.className = 'player-bg';
+                            img.alt = '';
+                            cell.appendChild(img);
+                        }
+                        const content = document.createElement('div');
+                        content.className = 'player-content';
+                        content.textContent = `${pos.player?.name || "Empty"} (${pos.position_abbr})`;
+                        cell.appendChild(content);
                     }
                     field.appendChild(cell);
                 });

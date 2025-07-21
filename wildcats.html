@@ -47,12 +47,20 @@
 
         .player-selection label {
             margin-right: 10px;
+            display: block;
         }
     </style>
 </head>
 
 <body>
     <h1>Soccer Lineup Generator</h1>
+    <div>
+        <button id="regenerate-btn" type="button">Regenerate Lineup</button>
+    </div>
+    <div>
+        <label for="formation-select"><b>Formation:</b></label>
+        <select id="formation-select"></select>
+    </div>
     <div class="player-selection" id="player-selection"></div>
     <div id="lineups"></div>
 
@@ -166,7 +174,7 @@
                 "name": "Quynn",
                 "full_name": "Quynn Smith",
                 "number": 13,
-                "preferences": { "pc_goalie": 0, "pc_defense": 5, "pc_mid_center": 0, "pc_mid_wing": 5, "pc_offense": 0 }
+                "preferences": { "pc_goalie": 0, "pc_defense": 7, "pc_mid_center": 0, "pc_mid_wing": 7, "pc_offense": 0 }
             }
         ];
 
@@ -224,6 +232,92 @@
             return lineups;
         }
 
+        // Ensured version: each player plays exactly 2 quarters, never double-assigns a player per quarter, and uses 0-preference as last resort
+        // The goalie is the same for Q1+Q2, and a (possibly different) same goalie for Q3+Q4
+        function generateLineupsEnsured(players, formationName, formations) {
+            const formation = formations[formationName];
+            let bestLineups = null;
+            let bestScore = -1;
+            const MAX_ATTEMPTS = 1000;
+            for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+                // Track how many quarters each player has played
+                const playerStats = players.map(p => ({ ...p, quartersPlayed: 0 }));
+                const lineups = [];
+                // 1. Pick a goalie for Q1+Q2 (must be able to play 2 quarters)
+                let goalie1Candidates = playerStats.filter(p => p.preferences.pc_goalie > 0 && p.quartersPlayed < 2)
+                    .sort((a, b) => b.preferences.pc_goalie - a.preferences.pc_goalie);
+                let goalie1 = getRandomFromTop(goalie1Candidates);
+                if (!goalie1) goalie1 = playerStats[0];
+                // 2. Pick a goalie for Q3+Q4 (cannot be goalie1 if possible, must be able to play 2 quarters)
+                let goalie2Candidates = playerStats.filter(p => p.name !== goalie1.name && p.preferences.pc_goalie > 0 && p.quartersPlayed < 2)
+                    .sort((a, b) => b.preferences.pc_goalie - a.preferences.pc_goalie);
+                let goalie2 = getRandomFromTop(goalie2Candidates);
+                if (!goalie2) {
+                    goalie2 = goalie1;
+                }
+                // Assignments: for each quarter, assign players to positions
+                // Track for each player which quarters they are assigned to
+                const playerQuarterAssignments = {};
+                players.forEach(p => playerQuarterAssignments[p.name] = []);
+                for (let q = 0; q < MAX_QUARTERS; q++) {
+                    // For each quarter, start with all players available who have played < 2 quarters
+                    const available = playerStats.filter(p => p.quartersPlayed < 2);
+                    const lineup = [];
+                    // Determine which goalie to use
+                    let goalie = (q < 2) ? goalie1 : goalie2;
+                    // Only assign goalie if they have not already played 2 quarters
+                    if (goalie.quartersPlayed >= 2) {
+                        // Pick another eligible goalie
+                        let altGoalie = available.filter(p => p.preferences.pc_goalie > 0).sort((a, b) => b.preferences.pc_goalie - a.preferences.pc_goalie)[0];
+                        if (!altGoalie) altGoalie = available[0];
+                        goalie = altGoalie;
+                    }
+                    // Remove goalie from available for this quarter
+                    const goalieIdx = available.findIndex(p => p.name === goalie.name);
+                    if (goalieIdx !== -1) available.splice(goalieIdx, 1);
+                    goalie.quartersPlayed++;
+                    playerQuarterAssignments[goalie.name].push(q);
+                    for (const pos of formation) {
+                        if (pos.category === "pc_goalie") {
+                            lineup.push({ ...pos, player: goalie });
+                            continue;
+                        }
+                        // 1. Try to find an available player with preference > 0 for this category
+                        let candidates = available.filter(p => p.preferences[pos.category] > 0)
+                            .sort((a, b) => b.preferences[pos.category] - a.preferences[pos.category]);
+                        let best = getRandomFromTop(candidates);
+                        // 2. If none, pick any available player (even if preference is 0)
+                        if (!best) {
+                            best = available[0] || null;
+                        }
+                        if (best) {
+                            // Remove from available for this quarter
+                            const idx = available.findIndex(p => p.name === best.name);
+                            if (idx !== -1) available.splice(idx, 1);
+                            best.quartersPlayed++;
+                            playerQuarterAssignments[best.name].push(q);
+                        }
+                        lineup.push({ ...pos, player: best || { name: "N/A" } });
+                    }
+                    lineups.push(lineup);
+                }
+                // Check if all players have exactly 2 quarters
+                const playerQuarters = playerStats.map(p => p.quartersPlayed);
+                const minQ = Math.min(...playerQuarters);
+                const maxQ = Math.max(...playerQuarters);
+                const score = playerStats.filter(p => p.quartersPlayed === 2).length;
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestLineups = lineups;
+                }
+                if (minQ === 2 && maxQ === 2) {
+                    return lineups;
+                }
+            }
+            // If we get here, return the best attempt
+            return bestLineups;
+        }
+
         function renderLineups(lineups, containerId) {
             const container = document.getElementById(containerId);
             container.innerHTML = "";
@@ -257,31 +351,62 @@
             });
         }
 
-        function renderPlayerSelection() {
+        function renderPlayerSelection(quartersCountMap = {}, checkedMap = null) {
             const container = document.getElementById('player-selection');
             container.innerHTML = '';
             players.forEach(player => {
                 const label = document.createElement('label');
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
-                checkbox.checked = true;
+                // Preserve checked state if checkedMap is provided, otherwise default to checked
+                checkbox.checked = checkedMap ? !!checkedMap[player.name] : true;
                 checkbox.value = player.name;
                 checkbox.addEventListener('change', regenerateLineups);
                 label.appendChild(checkbox);
-                label.append(` ${player.name}`);
+                const quarters = quartersCountMap[player.name] || 0;
+                label.append(` ${player.name} (${quarters})`);
                 container.appendChild(label);
             });
         }
 
+        function renderFormationDropdown() {
+            const select = document.getElementById('formation-select');
+            select.innerHTML = '';
+            Object.keys(formations).forEach((formationName, idx) => {
+                const option = document.createElement('option');
+                option.value = formationName;
+                option.textContent = formationName;
+                if (idx === 0) option.selected = true;
+                select.appendChild(option);
+            });
+            select.addEventListener('change', regenerateLineups);
+        }
+
         function regenerateLineups() {
             const checkboxes = document.querySelectorAll('#player-selection input[type="checkbox"]');
-            const selectedPlayers = players.filter(p => Array.from(checkboxes).find(cb => cb.value === p.name && cb.checked));
-            const lineups = generateLineups(selectedPlayers, "3-3-2", formations);
+            const checkedMap = {};
+            checkboxes.forEach(cb => { checkedMap[cb.value] = cb.checked; });
+            const selectedPlayers = players.filter(p => checkedMap[p.name]);
+            const select = document.getElementById('formation-select');
+            const selectedFormation = select.value;
+            const lineups = generateLineupsEnsured(selectedPlayers, selectedFormation, formations);
+            // Count quarters per player
+            const quartersCountMap = {};
+            lineups.forEach(lineup => {
+                lineup.forEach(pos => {
+                    if (pos.player && pos.player.name) {
+                        quartersCountMap[pos.player.name] = (quartersCountMap[pos.player.name] || 0) + 1;
+                    }
+                });
+            });
+            renderPlayerSelection(quartersCountMap, checkedMap);
             renderLineups(lineups, "lineups");
         }
 
+        renderFormationDropdown();
         renderPlayerSelection();
         regenerateLineups();
+        document.getElementById('regenerate-btn').addEventListener('click', regenerateLineups);
     </script>
 </body>
 

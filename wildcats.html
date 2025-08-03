@@ -23,8 +23,6 @@
 
         .field {
             display: grid;
-            grid-template-columns: repeat(6, 80px);
-            grid-auto-rows: 60px;
             gap: 2px;
             margin-bottom: 40px;
         }
@@ -362,11 +360,21 @@
                 const field = document.createElement('div');
                 field.className = 'field';
 
-                const grid = Array.from({ length: 6 * 6 }, () => null);
+                // Calculate dynamic grid size based on formation
+                const maxRow = Math.max(...lineup.map(pos => pos.row));
+                const maxColumn = Math.max(...lineup.map(pos => pos.column));
+                const gridWidth = maxColumn;
+                const gridHeight = maxRow;
+
+                // Update CSS grid template for this field
+                field.style.gridTemplateColumns = `repeat(${gridWidth}, 80px)`;
+                field.style.gridTemplateRows = `repeat(${gridHeight}, 60px)`;
+
+                const grid = Array.from({ length: gridWidth * gridHeight }, () => null);
 
                 lineup.forEach(pos => {
-                    const reversedRow = 6 - pos.row;
-                    const index = reversedRow * 6 + (pos.column - 1);
+                    const reversedRow = gridHeight - pos.row;
+                    const index = reversedRow * gridWidth + (pos.column - 1);
                     grid[index] = pos;
                 });
 

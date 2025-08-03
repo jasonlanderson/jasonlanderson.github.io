@@ -74,6 +74,25 @@
             margin-right: 10px;
             /* display: block; */
         }
+
+        .player-summary {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .player-summary h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .player-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
     </style>
 </head>
 
@@ -88,6 +107,7 @@
         <button id="regenerate-btn" type="button">Regenerate Lineup</button>
     </div>
     <div id="lineups"></div>
+    <div id="player-summary"></div>
     
 
     <script>
@@ -211,37 +231,74 @@
             return top[Math.floor(Math.random() * top.length)];
         }
 
+        function getWeightedRandomPlayer(candidates, positionCategory) {
+            if (candidates.length === 0) return null;
+
+            // Calculate total weight based on position preference values
+            const totalWeight = candidates.reduce((sum, player) =>
+                sum + player.preferences[positionCategory], 0);
+
+            if (totalWeight === 0) return candidates[Math.floor(Math.random() * candidates.length)];
+
+            // Generate random number between 0 and totalWeight
+            let random = Math.random() * totalWeight;
+
+            // Find the player based on weighted selection
+            for (const player of candidates) {
+                random -= player.preferences[positionCategory];
+                if (random <= 0) {
+                    return player;
+                }
+            }
+
+            // Fallback (shouldn't happen)
+            return candidates[candidates.length - 1];
+        }
+
         function generateLineups(players, formationName, formations) {
             const formation = formations[formationName];
             const playerStats = players.map(p => ({ ...p, quartersPlayed: 0 }));
             const lineups = [];
 
+            // Select goalies for each half using weighted random selection
+            const goalieOptions = players.filter(p => p.preferences.pc_goalie > 0);
+            const firstHalfGoalie = getWeightedRandomPlayer(goalieOptions, 'pc_goalie') || players[0];
+
+            // For second half, exclude the first half goalie if possible
+            const secondHalfOptions = goalieOptions.filter(p => p.name !== firstHalfGoalie.name);
+            const secondHalfGoalie = getWeightedRandomPlayer(secondHalfOptions, 'pc_goalie') ||
+                                   getWeightedRandomPlayer(goalieOptions, 'pc_goalie') ||
+                                   players[1] || firstHalfGoalie;
+
             for (let q = 0; q < MAX_QUARTERS; q++) {
-                const isNewHalf = q % 2 === 0;
-                let goalie;
+                const goalie = q < 2 ? firstHalfGoalie : secondHalfGoalie;
+                const assigned = new Set([goalie.name]);
 
-                if (isNewHalf) {
-                    const goalieOptions = playerStats.filter(p => p.preferences.pc_goalie > 0 && p.quartersPlayed < 4)
-                        .sort((a, b) => b.preferences.pc_goalie - a.preferences.pc_goalie);
-                    goalie = getRandomFromTop(goalieOptions);
-                }
-
-                const assigned = new Set([goalie?.name]);
-                if (goalie) goalie.quartersPlayed++;
+                // Track goalie's quarters
+                const goalieStats = playerStats.find(p => p.name === goalie.name);
+                if (goalieStats) goalieStats.quartersPlayed++;
 
                 const lineup = formation.map(pos => {
                     if (pos.category === "pc_goalie") {
                         return { ...pos, player: goalie };
                     }
 
-                    const candidates = playerStats.filter(p => !assigned.has(p.name) && p.preferences[pos.category] > 0 && p.quartersPlayed < 4)
-                        .sort((a, b) => b.preferences[pos.category] - a.preferences[pos.category]);
+                    // Get candidates who haven't reached 4 quarters and have preference > 0 for this position
+                    let candidates = playerStats.filter(p =>
+                        !assigned.has(p.name) &&
+                        p.quartersPlayed < 4 &&
+                        p.preferences[pos.category] > 0
+                    );
 
-                    let best = getRandomFromTop(candidates);
+                    let best = getWeightedRandomPlayer(candidates, pos.category);
 
+                    // If no suitable candidate, try anyone who hasn't reached 4 quarters
                     if (!best) {
-                        const fallback = playerStats.filter(p => !assigned.has(p.name) && p.quartersPlayed < 4);
-                        best = fallback.length > 0 ? getRandomFromTop(fallback) : null;
+                        candidates = playerStats.filter(p =>
+                            !assigned.has(p.name) &&
+                            p.quartersPlayed < 4
+                        );
+                        best = getRandomFromTop(candidates);
                     }
 
                     if (best) {
@@ -255,7 +312,42 @@
                 lineups.push(lineup);
             }
 
-            return lineups;
+            // Ensure each player plays at least 2 quarters
+            const playersUnder2Quarters = playerStats.filter(p => p.quartersPlayed < 2);
+
+            for (const player of playersUnder2Quarters) {
+                const quartersNeeded = 2 - player.quartersPlayed;
+
+                for (let needQ = 0; needQ < quartersNeeded; needQ++) {
+                    // Find a quarter where this player can be substituted in
+                    for (let q = 0; q < MAX_QUARTERS; q++) {
+                        const lineup = lineups[q];
+
+                        // Try to replace a non-goalie player who has played more quarters
+                        for (let posIdx = 0; posIdx < lineup.length; posIdx++) {
+                            const pos = lineup[posIdx];
+                            if (pos.category !== "pc_goalie" && pos.player && pos.player.name !== "N/A") {
+                                const currentPlayerStats = playerStats.find(p => p.name === pos.player.name);
+
+                                // Replace if current player has played more than 2 quarters and target player has preference > 0
+                                if (currentPlayerStats && currentPlayerStats.quartersPlayed > 2 &&
+                                    player.preferences[pos.category] > 0) {
+
+                                    // Make the swap
+                                    currentPlayerStats.quartersPlayed--;
+                                    player.quartersPlayed++;
+                                    lineup[posIdx].player = player;
+                                    break;
+                                }
+                            }
+                        }
+                        if (player.quartersPlayed >= 2) break;
+                    }
+                    if (player.quartersPlayed >= 2) break;
+                }
+            }
+
+            return { lineups, playerStats };
         }
 
         function renderLineups(lineups, containerId) {
@@ -303,6 +395,32 @@
             });
         }
 
+        function renderPlayerSummary(playerStats, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = "";
+
+            const summaryDiv = document.createElement('div');
+            summaryDiv.className = 'player-summary';
+
+            const title = document.createElement('h3');
+            title.textContent = 'Player Quarter Summary';
+            summaryDiv.appendChild(title);
+
+            const playerList = document.createElement('div');
+            playerList.className = 'player-list';
+
+            playerStats
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .forEach(player => {
+                    const playerDiv = document.createElement('div');
+                    playerDiv.textContent = `${player.name} (${player.quartersPlayed})`;
+                    playerList.appendChild(playerDiv);
+                });
+
+            summaryDiv.appendChild(playerList);
+            container.appendChild(summaryDiv);
+        }
+
         function renderPlayerSelection() {
             const container = document.getElementById('player-selection');
             container.innerHTML = '';
@@ -324,8 +442,9 @@
             const selectedPlayers = players.filter(p => Array.from(checkboxes).find(cb => cb.value === p.name && cb.checked));
             const select = document.getElementById('formation-select');
             const selectedFormation = select.value;
-            const lineups = generateLineups(selectedPlayers, selectedFormation, formations);
-            renderLineups(lineups, "lineups");
+            const result = generateLineups(selectedPlayers, selectedFormation, formations);
+            renderLineups(result.lineups, "lineups");
+            renderPlayerSummary(result.playerStats, "player-summary");
         }
 
         function renderFormationDropdown() {

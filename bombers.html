@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bombers Lineup Generator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        td,
+        th {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .field {
+            display: grid;
+            gap: 2px;
+            margin-bottom: 40px;
+        }
+
+        .player {
+            background: #e0f7fa;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            padding: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        .player-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            filter: grayscale(1) brightness(1.5);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .player-content {
+            position: relative;
+            z-index: 1;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .quarter-title {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .player-selection {
+            margin-bottom: 20px;
+        }
+
+        .player-selection label {
+            margin-right: 10px;
+            /* display: block; */
+        }
+
+        .player-summary {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .player-summary h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .player-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bombers Lineup Generator</h1>
+    <div class="player-selection" id="player-selection"></div>
+    <div>
+        <label for="formation-select"><b>Formation:</b></label>
+        <select id="formation-select"></select>
+    </div>
+    <div>
+        <button id="regenerate-btn" type="button">Regenerate Lineup</button>
+    </div>
+    <div id="lineups"></div>
+    <div id="player-summary"></div>
+    
+
+    <script>
+        // formations and players go here (use the JS objects from earlier)
+        // formations and players go here (use the JS objects from earlier)
+        const formations = {
+            "2-3-1": [
+                { "position_abbr": "G", "position_name": "Goalie", "category": "pc_goalie", "row": 1, "column": 3 },
+                { "position_abbr": "LD", "position_name": "Left Defense", "category": "pc_defense", "row": 2, "column": 2 },
+                { "position_abbr": "RD", "position_name": "Right Defense", "category": "pc_defense", "row": 2, "column": 4 },
+                { "position_abbr": "LM", "position_name": "Left Mid", "category": "pc_mid", "row": 3, "column": 1 },
+                { "position_abbr": "CM", "position_name": "Center Mid", "category": "pc_mid", "row": 3, "column": 3 },
+                { "position_abbr": "RM", "position_name": "Right Mid", "category": "pc_mid", "row": 3, "column": 5 },
+                { "position_abbr": "S", "position_name": "Forward", "category": "pc_offense", "row": 4, "column": 3 }
+            ],
+            "2-2-2": [
+                { "position_abbr": "G", "position_name": "Goalie", "category": "pc_goalie", "row": 1, "column": 2 },
+                { "position_abbr": "LD", "position_name": "Left Defense", "category": "pc_defense", "row": 2, "column": 1 },
+                { "position_abbr": "RD", "position_name": "Right Defense", "category": "pc_defense", "row": 2, "column": 3 },
+                { "position_abbr": "LM", "position_name": "Left Center Mid", "category": "pc_mid", "row": 3, "column": 1 },
+                { "position_abbr": "RM", "position_name": "Right Center Mid", "category": "pc_mid", "row": 3, "column": 3 },
+                { "position_abbr": "LS", "position_name": "Left Forward", "category": "pc_offense", "row": 4, "column": 1 },
+                { "position_abbr": "RS", "position_name": "Right Forward", "category": "pc_offense", "row": 4, "column": 3 }
+            ]
+        };
+        const players = [
+            {
+                "name": "Logan",
+                "full_name": "Logan Sinclair",
+                "number": 2,
+                "preferences": { "pc_goalie": 5, "pc_defense": 10, "pc_mid": 3, "pc_offense": 3 }
+            },
+            {
+                "name": "Alex",
+                "full_name": "Alexander Pham",
+                "number": 7,
+                "preferences": { "pc_goalie": 0, "pc_defense": 7, "pc_mid": 7, "pc_offense": 3 }
+            },
+            {
+                "name": "James",
+                "full_name": "James Bacon",
+                "number": 9,
+                "preferences": { "pc_goalie": 0, "pc_defense": 3, "pc_mid": 5, "pc_offense": 10 }
+            },
+            {
+                "name": "Landon",
+                "full_name": "Landon Snider",
+                "number": 10,
+                "preferences": { "pc_goalie": 0, "pc_defense": 3, "pc_mid": 7, "pc_offense": 7 }
+            },
+            {
+                "name": "Luke",
+                "full_name": "Luke Wells",
+                "number": 11,
+                "preferences": { "pc_goalie": 0, "pc_defense": 3, "pc_mid": 7, "pc_offense": 7 }
+            },
+            {
+                "name": "Lincoln",
+                "full_name": "Lincoln Carneghi",
+                "number": 12,
+                "preferences": { "pc_goalie": 10, "pc_defense": 3, "pc_mid": 3, "pc_offense": 3 }
+            },
+            {
+                "name": "Sejay",
+                "full_name": "Sejay Papas-Lopez",
+                "number": 22,
+                "preferences": { "pc_goalie": 0, "pc_defense": 3, "pc_mid": 7, "pc_offense": 7 }
+            },
+            {
+                "name": "Frederick",
+                "full_name": "Frederick Hoffman",
+                "number": 24,
+                "preferences": { "pc_goalie": 5, "pc_defense": 7, "pc_mid": 3, "pc_offense": 3 }
+            },
+            {
+                "name": "Wyatt",
+                "full_name": "Wyatt Anderson",
+                "number": 35,
+                "preferences": { "pc_goalie": 0, "pc_defense": 7, "pc_mid": 7, "pc_offense": 3 }
+            },
+            {
+                "name": "Kieran",
+                "full_name": "Kieran Sheth",
+                "number": 80,
+                "preferences": { "pc_goalie": 0, "pc_defense": 3, "pc_mid": 7, "pc_offense": 7 }
+            }
+        ];
+
+        const MAX_QUARTERS = 4;
+
+        function getRandomFromTop(candidates, topN = 3) {
+            const top = candidates.slice(0, topN);
+            return top[Math.floor(Math.random() * top.length)];
+        }
+
+        function getWeightedRandomPlayer(candidates, positionCategory) {
+            if (candidates.length === 0) return null;
+
+            // Calculate total weight based on position preference values
+            const totalWeight = candidates.reduce((sum, player) =>
+                sum + player.preferences[positionCategory], 0);
+
+            if (totalWeight === 0) return candidates[Math.floor(Math.random() * candidates.length)];
+
+            // Generate random number between 0 and totalWeight
+            let random = Math.random() * totalWeight;
+
+            // Find the player based on weighted selection
+            for (const player of candidates) {
+                random -= player.preferences[positionCategory];
+                if (random <= 0) {
+                    return player;
+                }
+            }
+
+            // Fallback (shouldn't happen)
+            return candidates[candidates.length - 1];
+        }
+
+        function generateLineups(players, formationName, formations) {
+            const formation = formations[formationName];
+            const playerStats = players.map(p => ({ ...p, quartersPlayed: 0 }));
+            const lineups = [];
+
+            // Select goalies for each half using weighted random selection
+            const goalieOptions = players.filter(p => p.preferences.pc_goalie > 0);
+            const firstHalfGoalie = getWeightedRandomPlayer(goalieOptions, 'pc_goalie') || players[0];
+
+            // For second half, exclude the first half goalie if possible
+            const secondHalfOptions = goalieOptions.filter(p => p.name !== firstHalfGoalie.name);
+            const secondHalfGoalie = getWeightedRandomPlayer(secondHalfOptions, 'pc_goalie') ||
+                                   getWeightedRandomPlayer(goalieOptions, 'pc_goalie') ||
+                                   players[1] || firstHalfGoalie;
+
+            for (let q = 0; q < MAX_QUARTERS; q++) {
+                const goalie = q < 2 ? firstHalfGoalie : secondHalfGoalie;
+                const assigned = new Set([goalie.name]);
+
+                // Track goalie's quarters
+                const goalieStats = playerStats.find(p => p.name === goalie.name);
+                if (goalieStats) goalieStats.quartersPlayed++;
+
+                const lineup = formation.map(pos => {
+                    if (pos.category === "pc_goalie") {
+                        return { ...pos, player: goalie };
+                    }
+
+                    // Get candidates who haven't reached 4 quarters and have preference > 0 for this position
+                    let candidates = playerStats.filter(p =>
+                        !assigned.has(p.name) &&
+                        p.quartersPlayed < 4 &&
+                        p.preferences[pos.category] > 0
+                    );
+
+                    let best = getWeightedRandomPlayer(candidates, pos.category);
+
+                    // If no suitable candidate, try anyone who hasn't reached 4 quarters
+                    if (!best) {
+                        candidates = playerStats.filter(p =>
+                            !assigned.has(p.name) &&
+                            p.quartersPlayed < 4
+                        );
+                        best = getRandomFromTop(candidates);
+                    }
+
+                    if (best) {
+                        assigned.add(best.name);
+                        best.quartersPlayed++;
+                    }
+
+                    return { ...pos, player: best || { name: "N/A" } };
+                });
+
+                lineups.push(lineup);
+            }
+
+            // Ensure each player plays at least 2 quarters
+            const playersUnder2Quarters = playerStats.filter(p => p.quartersPlayed < 2);
+
+            for (const player of playersUnder2Quarters) {
+                const quartersNeeded = 2 - player.quartersPlayed;
+
+                for (let needQ = 0; needQ < quartersNeeded; needQ++) {
+                    // Find a quarter where this player can be substituted in
+                    for (let q = 0; q < MAX_QUARTERS; q++) {
+                        const lineup = lineups[q];
+
+                        // Try to replace a non-goalie player who has played more quarters
+                        for (let posIdx = 0; posIdx < lineup.length; posIdx++) {
+                            const pos = lineup[posIdx];
+                            if (pos.category !== "pc_goalie" && pos.player && pos.player.name !== "N/A") {
+                                const currentPlayerStats = playerStats.find(p => p.name === pos.player.name);
+
+                                // Replace if current player has played more than 2 quarters and target player has preference > 0
+                                if (currentPlayerStats && currentPlayerStats.quartersPlayed > 2 &&
+                                    player.preferences[pos.category] > 0) {
+
+                                    // Make the swap
+                                    currentPlayerStats.quartersPlayed--;
+                                    player.quartersPlayed++;
+                                    lineup[posIdx].player = player;
+                                    break;
+                                }
+                            }
+                        }
+                        if (player.quartersPlayed >= 2) break;
+                    }
+                    if (player.quartersPlayed >= 2) break;
+                }
+            }
+
+            return { lineups, playerStats };
+        }
+
+        function renderLineups(lineups, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = "";
+            lineups.forEach((lineup, i) => {
+                const title = document.createElement('div');
+                title.className = 'quarter-title';
+                title.textContent = `Quarter ${i + 1}`;
+                container.appendChild(title);
+
+                const field = document.createElement('div');
+                field.className = 'field';
+
+                // Calculate dynamic grid size based on formation
+                const maxRow = Math.max(...lineup.map(pos => pos.row));
+                const maxColumn = Math.max(...lineup.map(pos => pos.column));
+                const gridWidth = maxColumn;
+                const gridHeight = maxRow;
+
+                // Update CSS grid template for this field
+                field.style.gridTemplateColumns = `repeat(${gridWidth}, 80px)`;
+                field.style.gridTemplateRows = `repeat(${gridHeight}, 60px)`;
+
+                const grid = Array.from({ length: gridWidth * gridHeight }, () => null);
+
+                lineup.forEach(pos => {
+                    const reversedRow = gridHeight - pos.row;
+                    const index = reversedRow * gridWidth + (pos.column - 1);
+                    grid[index] = pos;
+                });
+
+                grid.forEach(pos => {
+                    const cell = document.createElement('div');
+                    if (pos) {
+                        cell.className = 'player';
+
+                        if (pos.player && pos.player.number) {
+                            const img = document.createElement('img');
+                            img.src = `bombers/${pos.player.number}.png`;
+                            img.className = 'player-bg';
+                            img.alt = '';
+                            cell.appendChild(img);
+                        }
+
+                        const content = document.createElement('div');
+                        content.className = 'player-content';
+                        content.textContent = `${pos.player?.name || "Empty"} (${pos.position_abbr})`;
+                        cell.appendChild(content);
+                    }
+                    field.appendChild(cell);
+                });
+
+                container.appendChild(field);
+            });
+        }
+
+        function renderPlayerSummary(playerStats, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = "";
+
+            const summaryDiv = document.createElement('div');
+            summaryDiv.className = 'player-summary';
+
+            const title = document.createElement('h3');
+            title.textContent = 'Player Quarter Summary';
+            summaryDiv.appendChild(title);
+
+            const playerList = document.createElement('div');
+            playerList.className = 'player-list';
+
+            playerStats
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .forEach(player => {
+                    const playerDiv = document.createElement('div');
+                    playerDiv.textContent = `${player.name} (${player.quartersPlayed})`;
+                    playerList.appendChild(playerDiv);
+                });
+
+            summaryDiv.appendChild(playerList);
+            container.appendChild(summaryDiv);
+        }
+
+        function renderPlayerSelection() {
+            const container = document.getElementById('player-selection');
+            container.innerHTML = '';
+            players.forEach(player => {
+                const label = document.createElement('label');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = true;
+                checkbox.value = player.name;
+                checkbox.addEventListener('change', regenerateLineups);
+                label.appendChild(checkbox);
+                label.append(` ${player.name}`);
+                container.appendChild(label);
+            });
+        }
+
+        function regenerateLineups() {
+            const checkboxes = document.querySelectorAll('#player-selection input[type="checkbox"]');
+            const selectedPlayers = players.filter(p => Array.from(checkboxes).find(cb => cb.value === p.name && cb.checked));
+            const select = document.getElementById('formation-select');
+            const selectedFormation = select.value;
+            const result = generateLineups(selectedPlayers, selectedFormation, formations);
+            renderLineups(result.lineups, "lineups");
+            renderPlayerSummary(result.playerStats, "player-summary");
+        }
+
+        function renderFormationDropdown() {
+            const select = document.getElementById('formation-select');
+            select.innerHTML = '';
+            Object.keys(formations).forEach((formationName, idx) => {
+                const option = document.createElement('option');
+                option.value = formationName;
+                option.textContent = formationName;
+                if (idx === 0) option.selected = true;
+                select.appendChild(option);
+            });
+            select.addEventListener('change', regenerateLineups);
+        }
+
+        renderPlayerSelection();
+        renderFormationDropdown();
+        regenerateLineups();
+        document.getElementById('regenerate-btn').addEventListener('click', regenerateLineups);
+    </script>
+</body>
+
+</html>
